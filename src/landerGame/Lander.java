@@ -2,6 +2,7 @@ package landerGame;
 
 import org.newdawn.slick.AppGameContainer;
 import org.newdawn.slick.BasicGame;
+import org.newdawn.slick.Color;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.SlickException;
@@ -18,14 +19,15 @@ public class Lander extends BasicGame {
 	@Override
 	public void render(GameContainer arg0, Graphics arg1) throws SlickException {
 		// TODO  is called constantly. This is where all your graphics is done.
-
+		arg1.drawString("Welcome to the game", 200, 200); //places text at 200, 200 in the screen
+		arg1.setColor(Color.red);
 	}
 
 	@Override
 	public void init(GameContainer arg0) throws SlickException {
 		// TODO  is called when the game starts. You can put code here to set things up for your game, such as loading resources like images and sounds.
 
-	}
+	} 	
 
 	@Override
 	public void update(GameContainer arg0, int arg1) throws SlickException {
