@@ -6,6 +6,7 @@ import org.newdawn.slick.Color;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
+import org.newdawn.slick.Input;
 import org.newdawn.slick.SlickException;
 //class for general game folder, uses Slick2d library "Basic Game"
 //is built from this tutorial:
@@ -13,6 +14,9 @@ import org.newdawn.slick.SlickException;
 public class Lander extends BasicGame {
 	
 	Image hero; //this is where we initialize the image of the spaceship
+	float x = 20.0f; //x-coordinates for spaceship
+	float y = 5.0f; // y-coordinates for spaceship
+	float speed = 0.2f; //speed of spaceship
 
 	public Lander(String title) {
 		super(title);
@@ -27,7 +31,7 @@ public class Lander extends BasicGame {
 		arg1.setColor(Color.red);
 		
 		//after loading the spaceship image in "init", we draw it in "render"
-		arg1.drawImage(hero, 20, 20); //it's called arg1, after "Graphics arg1", above. The spaceship is drawn at location (100,100)
+		arg1.drawImage(hero, x, y); //it's called arg1, after "Graphics arg1", above. The spaceship is drawn at location (100,100)
 	}
 
 	@Override
@@ -38,9 +42,37 @@ public class Lander extends BasicGame {
 	} 	
 
 	@Override
-	public void update(GameContainer arg0, int arg1) throws SlickException {
+	public void update(GameContainer arg0, int delta) throws SlickException {
 		// TODO  is called periodically, usually every 20 milliseconds, but the time will vary depending on how much processing you’ll be putting in. This is where the game logic is done.
 
+		Input input = arg0.getInput(); //asks Slick2D what keys are being pressed
+		
+		//movements of the spaceship
+		//if the right arrow is being pressed:
+		if(input.isKeyDown(input.KEY_RIGHT))
+		{
+			x+= speed * delta; //going in the positive x-direction. multiplied by delta so the FPS is stabilized for all computers(same speed for all).
+		}
+
+		//if the left arrow is being pressed:
+		if(input.isKeyDown(input.KEY_LEFT))
+		{
+			x-= speed * delta; //going in the decreasing x-direction. multiplied by delta so the FPS is stabilized for all computers(same speed for all).
+		}
+		
+		//if the down arrow is being pressed:
+		if(input.isKeyDown(input.KEY_DOWN))
+		{
+			y+= speed * delta; //going in the positive y-direction. multiplied by delta so the FPS is stabilized for all computers(same speed for all).
+		}
+		
+		//if the up arrow is being pressed:
+		if(input.isKeyDown(input.KEY_UP))
+		{
+			y-= speed * delta; //going in the decreasing y-direction. multiplied by delta so the FPS is stabilized for all computers(same speed for all).
+		}
+		
+		
 	}
 
 	public static void main(String[] args) {
