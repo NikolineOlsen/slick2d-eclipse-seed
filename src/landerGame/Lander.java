@@ -11,7 +11,6 @@ import org.newdawn.slick.SlickException;
 // https:baksteenbrick.wordpress.com/2011/02/08/writing-java-games-with-slick-part-two-hello-world/
 public class Lander extends BasicGame {
 
-	
 	public Lander(String title) {
 		super(title);
 		// TODO Auto-generated constructor stub
@@ -21,10 +20,7 @@ public class Lander extends BasicGame {
 	public void render(GameContainer arg0, Graphics arg1) throws SlickException {
 		// TODO  is called constantly. This is where all your graphics is done.
 		arg1.drawString("Welcome to the game", 200, 200); //places text at 200, 200 in the screen
-		//arg1.setColor(Color.red);
-		arg1.setColor(new Color(0,255,150)); // A  yucky green defined using three integers
-		//arg1.setColor(new Color(1.0f,0.5f,0.5f,0.8f)); // A light purple with 80% transparency defined using four floats
-		arg1.drawRect(180, 170, 210, 80);
+		arg1.setColor(Color.red);
 	}
 
 	@Override
