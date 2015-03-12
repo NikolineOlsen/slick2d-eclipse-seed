@@ -14,6 +14,7 @@ import org.newdawn.slick.SlickException;
 public class Lander extends BasicGame {
 	
 	Image hero; //this is where we initialize the image of the spaceship
+	Image bg;
 	float x = 20.0f; //x-coordinates for spaceship
 	float y = 5.0f; // y-coordinates for spaceship
 	float speed = 0.2f; //speed of spaceship
@@ -36,7 +37,7 @@ public class Lander extends BasicGame {
 		arg1.drawRect(180, 170, 210, 80);
 
 		arg1.setColor(Color.red);
-		
+		arg1.drawImage(bg,0,0);
 		//after loading the spaceship image in "init", we draw it in "render"
 		arg1.drawImage(hero, x, y); //it's called arg1, after "Graphics arg1", above. The spaceship is drawn at location (100,100)
 	}
@@ -46,6 +47,8 @@ public class Lander extends BasicGame {
 		// TODO  is called when the game starts. You can put code here to set things up for your game, such as loading resources like images and sounds.
 		//loading the spaceship image:
 		hero = new Image("landerGame/Resources/triangle.png");
+		bg = new Image("landerGame/resources/spaceBg.jpg");
+		
 	} 	
 
 	@Override
