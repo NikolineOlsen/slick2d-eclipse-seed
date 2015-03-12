@@ -10,7 +10,7 @@ public class Spaceship extends BasicGame {  //this is the class for moving the s
 
 	//this is the place where we create all the variables
 	//the game images:
-	//Image hero;
+	Image hero;
 	
 	public Spaceship(String title) {
 		super(title);
@@ -21,7 +21,7 @@ public class Spaceship extends BasicGame {  //this is the class for moving the s
 	public void render(GameContainer arg0, Graphics arg1) throws SlickException { //render is called constantly. This is where all graphics is done.
 		// TODO Auto-generated method stub
 		//after loading the spaceship image in "init", we draw it in "render"
-		//arg1.drawImage(hero, 100, 100); //it's called arg1, after "Graphics arg1", above. The spaceship is drawn at location (100,100)
+		arg1.drawImage(hero, 100, 100); //it's called arg1, after "Graphics arg1", above. The spaceship is drawn at location (100,100)
 
 	}
 
@@ -29,7 +29,7 @@ public class Spaceship extends BasicGame {  //this is the class for moving the s
 	public void init(GameContainer arg0) throws SlickException { //init is called when the game starts. This is where we set things up for the game, like load resources like images and sound.
 		// TODO Auto-generated method stub
 		//loading the spaceship image:
-		//hero = new Image("landerGame/triangle.png");
+		hero = new Image("Spaceship.png");
 	
 
 	}
