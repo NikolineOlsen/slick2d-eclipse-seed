@@ -13,33 +13,51 @@ import org.newdawn.slick.SlickException;
 // https:baksteenbrick.wordpress.com/2011/02/08/writing-java-games-with-slick-part-two-hello-world/
 public class Lander extends BasicGame {
 	
-	//Image hero; 
+	
 	Image bg;
 	Spaceship player = new Spaceship("Player"); //creates new spaceship object. It's methods is called later in this class
+	planet testplanet;
 	
+	static int xResolution = 1200;
+	static int yResolution = 700;
+	
+	
+
 	public Lander(String title) {
 		super(title);
-		// TODO Auto-generated constructor stub
+		//constructor
 	}
 
 	@Override
 	public void render(GameContainer arg0, Graphics arg1) throws SlickException {
 		// TODO  is called constantly. This is where all your graphics is done.
-		arg1.drawImage(bg,0,0);
-		arg1.drawString("Welcome to the game", 200, 200); //places text at 200, 200 in the screen
+		
+		arg1.translate(-player.x, -player.y); // makes screen follow character
+		
+		arg1.drawImage(bg,player.x-600,player.y-400); // draws background
+			
+		testplanet.render(arg0, arg1);
+				
+		player.render(arg0, arg1); // calls render method in Spaceship class
+				
+		
+		//GUI below
+		arg1.drawString("Welcome to the game", xResolution/2, yResolution/2); //places text at 200, 200 in the screen
 		//arg1.setColor(Color.red);
 		arg1.setColor(new Color(0,255,150)); // A  yucky green defined using three integers
 		//arg1.setColor(new Color(1.0f,0.5f,0.5f,0.8f)); // A light purple with 80% transparency defined using four floats
-		arg1.drawRect(180, 170, 210, 80);	
+		arg1.drawRect(xResolution/2-20, yResolution/2-20, 210, 80);	
 		
-		player.render(arg0, arg1); // calls render method in Spaceship class
 	}
 
 	@Override
 	public void init(GameContainer arg0) throws SlickException {
 		// TODO  is called when the game starts. You can put code here to set things up for your game, such as loading resources like images and sounds.
-		bg = new Image("landerGame/resources/spaceBg.jpg");
+		bg = new Image("landerGame/resources/spaceBg2.jpg");
 		player.init(arg0); //calls init method in Spaceship
+		testplanet = new planet(1, 200, 100);
+
+	
 	} 	
 
 	@Override
@@ -51,7 +69,7 @@ public class Lander extends BasicGame {
 		Lander game = new Lander("Lander Game");
 		try {
 			AppGameContainer container = new AppGameContainer(game);
-			container.setDisplayMode(800, 600, false); //size for the game window
+			container.setDisplayMode(xResolution, yResolution, false); //size for the game window
 			container.start();	
 		} catch (SlickException e) {
 			// TODO Auto-generated catch block
