@@ -47,7 +47,7 @@ public class Lander extends BasicGame {
 	public void init(GameContainer arg0) throws SlickException {
 		// TODO  is called when the game starts. You can put code here to set things up for your game, such as loading resources like images and sounds.
 		//loading the spaceship image:
-		hero = new Image("landerGame/Resources/triangle.png");
+		hero = new Image("landerGame/Resources/minispace.png");
 		bg = new Image("landerGame/resources/spaceBg.jpg");
 		
 	} 	

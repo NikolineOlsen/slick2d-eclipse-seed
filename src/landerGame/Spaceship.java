@@ -12,7 +12,7 @@ public class Spaceship extends BasicGame {  //this is the class for moving the s
 	//the game images:
 	Image hero;
 	
-	public Spaceship(String title) {
+	public Spaceship(String title) { // remember to call this in Landers Main
 		super(title);
 		// TODO Auto-generated constructor stub
 	}
