@@ -23,7 +23,11 @@ public class SimpleSlickGame extends BasicGame
 	@Override
 	public void render(GameContainer gc, Graphics g) throws SlickException
 	{
+<<<<<<< HEAD
+		g.drawString("Fuc you all!", 250, 200);
+=======
 		g.drawString("Hey all!", 250, 200);
+>>>>>>> parent of c7a261d... yo bitches
 	}
 
 	public static void main(String[] args)
