@@ -28,6 +28,9 @@ public class Lander extends BasicGame {
 	@Override
 	public void render(GameContainer arg0, Graphics arg1) throws SlickException {
 		// TODO  is called constantly. This is where all your graphics is done.
+		arg1.drawImage(bg,0,0);
+		//after loading the spaceship image in "init", we draw it in "render"
+		arg1.drawImage(hero, x, y); //it's called arg1, after "Graphics arg1", above. The spaceship is drawn at location (100,100)
 		
 		arg1.drawString("Welcome to the game", 200, 200); //places text at 200, 200 in the screen
 
@@ -37,9 +40,7 @@ public class Lander extends BasicGame {
 		arg1.drawRect(180, 170, 210, 80);
 
 		arg1.setColor(Color.red);
-		arg1.drawImage(bg,0,0);
-		//after loading the spaceship image in "init", we draw it in "render"
-		arg1.drawImage(hero, x, y); //it's called arg1, after "Graphics arg1", above. The spaceship is drawn at location (100,100)
+		
 	}
 
 	@Override
