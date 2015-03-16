@@ -2,7 +2,7 @@ package landerGame;
 
 import org.newdawn.slick.AppGameContainer;
 import org.newdawn.slick.BasicGame;
-import org.newdawn.slick.Color;
+//import org.newdawn.slick.Color; // is not used anymore since all Color operations have been moved to GUI class
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
@@ -13,15 +13,13 @@ import org.newdawn.slick.SlickException;
 // https:baksteenbrick.wordpress.com/2011/02/08/writing-java-games-with-slick-part-two-hello-world/
 public class Lander extends BasicGame {
 	
-	
 	Image bg;
 	Spaceship player = new Spaceship("Player"); //creates new spaceship object. It's methods is called later in this class
+	GUI welcome = new GUI();
 	planet testplanet;
 	
 	static int xResolution = 1200;
 	static int yResolution = 700;
-	
-	
 
 	public Lander(String title) {
 		super(title);
@@ -39,14 +37,8 @@ public class Lander extends BasicGame {
 		testplanet.render(arg0, arg1);
 				
 		player.render(arg0, arg1); // calls render method in Spaceship class
-				
+		welcome.render(arg0, arg1); // calls render method in GUI
 		
-		//GUI below
-		arg1.drawString("Welcome to the game", xResolution/2, yResolution/2); //places text at 200, 200 in the screen
-		//arg1.setColor(Color.red);
-		arg1.setColor(new Color(0,255,150)); // A  yucky green defined using three integers
-		//arg1.setColor(new Color(1.0f,0.5f,0.5f,0.8f)); // A light purple with 80% transparency defined using four floats
-		arg1.drawRect(xResolution/2-20, yResolution/2-20, 210, 80);	
 		
 	}
 
