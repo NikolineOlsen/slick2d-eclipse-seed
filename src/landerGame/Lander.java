@@ -32,7 +32,7 @@ public class Lander extends BasicGame {
 	public void render(GameContainer arg0, Graphics arg1) throws SlickException {
 		// TODO  is called constantly. This is where all your graphics is done.
 		
-		arg1.translate(-player.x, -player.y); // makes screen follow character
+		arg1.translate(-player.x, -player.y); // makes screen follow character(gives the illusion of it)
 		
 		arg1.drawImage(bg,player.x-600,player.y-400); // draws background
 			
@@ -70,6 +70,7 @@ public class Lander extends BasicGame {
 		try {
 			AppGameContainer container = new AppGameContainer(game);
 			container.setDisplayMode(xResolution, yResolution, false); //size for the game window
+			container.setTargetFrameRate(60);
 			container.start();	
 		} catch (SlickException e) {
 			// TODO Auto-generated catch block
