@@ -32,7 +32,7 @@ public class Lander extends BasicGame {
 		
 		arg1.translate(-player.x, -player.y); // makes screen follow character(gives the illusion of it)
 		
-		arg1.drawImage(bg,player.x-600,player.y-400); // draws background
+		arg1.drawImage(bg,player.x-xResolution/3,player.y-yResolution/3); // draws background somewhat centralized
 			
 		testplanet.render(arg0, arg1);
 				
