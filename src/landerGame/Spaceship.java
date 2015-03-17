@@ -76,10 +76,10 @@ public class Spaceship extends BasicGame {  //this is the class for moving the s
 		}
 		
 		//to create an acceleration thrust for the player:
-		if(input.isKeyDown(Input.KEY_SPACE)&&(input.isKeyDown(Input.KEY_UP)))
-		{
-			y-= speed*10; //creates an acceleration for the spaceship in the upwards direction
-		}
+		//if(input.isKeyDown(Input.KEY_SPACE)&&(input.isKeyDown(Input.KEY_UP)))
+		//{
+			//y-= speed*10; //creates an acceleration for the spaceship in the upwards direction
+		//}
 		
 	
 	    
