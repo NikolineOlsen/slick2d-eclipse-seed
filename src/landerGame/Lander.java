@@ -19,10 +19,14 @@ public class Lander extends BasicGame {
 	planet testplanet;
 	
 	
+	static int VIEWPORT_SIZE_X = 1200;
+	static int VIEWPORT_SIZE_Y = 700;
 	
-	static int xResolution = 1200;
-	static int yResolution = 700;
+	float bgPosX = player.x-VIEWPORT_SIZE_X/3;
+	float bgPosY = player.y-VIEWPORT_SIZE_Y/3;
 
+	float parallaxConstant = 30;
+	
 	public Lander(String title) {
 		super(title);
 		//constructor
@@ -32,10 +36,11 @@ public class Lander extends BasicGame {
 	public void render(GameContainer arg0, Graphics arg1) throws SlickException {
 		// TODO  is called constantly. This is where all your graphics is done.
 		
-		arg1.translate(-player.x, -player.y); // makes screen follow character(gives the illusion of it)
-		//hey
-		arg1.drawImage(bg,player.x-xResolution/3,player.y-yResolution/3); // draws background somewhat centralized
-			
+		arg1.translate(player.x/parallaxConstant, player.y/parallaxConstant);
+		arg1.drawImage(bg, bgPosX,bgPosY); // draws background somewhat centralized
+		
+		arg1.translate(-player.x,-player.y); // makes screen follow character(gives the illusion of it)
+					
 		testplanet.render(arg0, arg1);
 				
 		player.render(arg0, arg1); // calls render method in Spaceship class
@@ -57,17 +62,17 @@ public class Lander extends BasicGame {
 	@Override
 	public void update(GameContainer arg0, int delta) throws SlickException {
 		player.update(arg0, delta); // calls Spaceship class update method, where movement is coded
+		
 	}
 
 	public static void main(String[] args) {
 		Lander game = new Lander("Lander Game");
 		try {
 			AppGameContainer container = new AppGameContainer(game);
-			container.setDisplayMode(xResolution, yResolution, false); //size for the game window
+			container.setDisplayMode(VIEWPORT_SIZE_X, VIEWPORT_SIZE_Y, false); //size for the game window
 			container.setTargetFrameRate(60);
 			container.start();	
 		} catch (SlickException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
