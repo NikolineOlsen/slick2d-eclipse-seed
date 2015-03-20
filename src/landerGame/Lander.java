@@ -17,7 +17,8 @@ public class Lander extends BasicGame {
 	Spaceship player = new Spaceship("Player"); //creates new spaceship object. It's methods is called later in this class
 	GUI welcome = new GUI();
 	planet testplanet;
-	
+	Image stardust;
+	Image asteroidbelt;
 	
 	static int VIEWPORT_SIZE_X = 1200;
 	static int VIEWPORT_SIZE_Y = 700;
@@ -36,14 +37,23 @@ public class Lander extends BasicGame {
 	public void render(GameContainer arg0, Graphics arg1) throws SlickException {
 		// TODO  is called constantly. This is where all your graphics is done.
 		
+		//translate functions below are used to create "parallax" effect.
 		arg1.translate(-player.x/parallaxConstant, -player.y/parallaxConstant);
 		arg1.drawImage(bg, bgPosX,bgPosY); // draws background somewhat centralized
 		
-		arg1.translate(-player.x,-player.y); // makes screen follow character(gives the illusion of it)
-					
+		
+		arg1.translate(-player.x,-player.y); 
 		testplanet.render(arg0, arg1);
+		
+		arg1.translate(-player.x/2, -player.y/2);
+		arg1.drawImage(stardust, bgPosX,bgPosY);
+		
 		arg1.translate(player.x/parallaxConstant, player.y/parallaxConstant);		
 		player.render(arg0, arg1); // calls render method in Spaceship class
+		
+		arg1.translate(-player.x*2, -player.y*2);
+		arg1.drawImage(asteroidbelt, bgPosX, bgPosY);
+		
 		welcome.render(arg0, arg1); // calls render method in GUI
 		
 		
@@ -55,7 +65,9 @@ public class Lander extends BasicGame {
 		bg = new Image("landerGame/resources/spaceBg3.jpg");
 		player.init(arg0); //calls init method in Spaceship
 		testplanet = new planet(1, 200, 100);
-
+		
+		stardust = new Image("landerGame/resources/stardust.png");
+		asteroidbelt = new Image("landerGame/resources/asteroidbelt1.png");
 	
 	} 	
 
