@@ -36,13 +36,13 @@ public class Lander extends BasicGame {
 	public void render(GameContainer arg0, Graphics arg1) throws SlickException {
 		// TODO  is called constantly. This is where all your graphics is done.
 		
-		arg1.translate(player.x/parallaxConstant, player.y/parallaxConstant);
+		arg1.translate(-player.x/parallaxConstant, -player.y/parallaxConstant);
 		arg1.drawImage(bg, bgPosX,bgPosY); // draws background somewhat centralized
 		
 		arg1.translate(-player.x,-player.y); // makes screen follow character(gives the illusion of it)
 					
 		testplanet.render(arg0, arg1);
-				
+		arg1.translate(player.x/parallaxConstant, player.y/parallaxConstant);		
 		player.render(arg0, arg1); // calls render method in Spaceship class
 		welcome.render(arg0, arg1); // calls render method in GUI
 		
