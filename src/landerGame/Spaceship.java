@@ -14,7 +14,12 @@ public class Spaceship extends BasicGame {  //this is the class for moving the s
 	Image hero;
 	float x = 20.0f; //x-coordinates for spaceship
 	float y = 5.0f; // y-coordinates for spaceship
-	float speed = 0.2f; //speed of spaceship
+	
+	public double accelx = 0;
+	public double accely = 0;
+	public float angle = -90;
+	public double throttlex;//throttlex and -y will control the difference in acceleration when maneuvering the ship
+	public double throttley;
 	
 	public Spaceship(String title) { // remember to call this in Landers Main
 		super(title);
@@ -26,6 +31,7 @@ public class Spaceship extends BasicGame {  //this is the class for moving the s
 	public void render(GameContainer arg0, Graphics arg1) throws SlickException { //render is called constantly. This is where all graphics is done.
 		// TODO Auto-generated method stub
 		//after loading the spaceship image in "init", we draw it in "render"
+		
 		arg1.drawImage(hero, x, y); //it's called arg1, after "Graphics arg1", above. The spaceship is drawn at location (100,100)
 	}
 
@@ -43,31 +49,59 @@ public class Spaceship extends BasicGame {  //this is the class for moving the s
 
 		Input input = arg0.getInput(); //asks Slick2D what keys are being pressed
 		
-		//movements of the spaceship
-		//if the right arrow is being pressed:
+	
+		movement();
+		
+		
 		if(input.isKeyDown(Input.KEY_RIGHT))
 		{
-			x+= speed * delta; //going in the positive x-direction. multiplied by delta so the FPS is stabilized for all computers(same speed for all).
+			
+			rotateshipright();
 		}
 
 		//if the left arrow is being pressed:
 		if(input.isKeyDown(Input.KEY_LEFT))
 		{
-			x-= speed * delta; //going in the decreasing x-direction. multiplied by delta so the FPS is stabilized for all computers(same speed for all).
-		}
 		
-		//if the down arrow is being pressed:
-		if(input.isKeyDown(Input.KEY_DOWN))
-		{
-			y+= speed * delta; //going in the positive y-direction. multiplied by delta so the FPS is stabilized for all computers(same speed for all).
+		rotateshipleft();
+		
 		}
+		throttlex = 0.001f * Math.cos(Math.toRadians(angle)); 
+		throttley = 0.001f * Math.sin(Math.toRadians(angle));
+			
 		
 		//if the up arrow is being pressed:
 		if(input.isKeyDown(Input.KEY_UP))
 		{
-			y-= speed * delta; //going in the decreasing y-direction. multiplied by delta so the FPS is stabilized for all computers(same speed for all).
+			throttling();
+	
 		}
 		
+	}
+	public void movement(){ //This function moves the ship in it's current direction
+		x += accelx;
+
+		y += accely;
+		
+		accelx = accelx/1.001;
+		accely = accely/1.001;
+		
+	}
+	
+	public void rotateshipleft(){
+		angle -= 1;
+		
+	}
+	
+	public void rotateshipright(){
+		angle += 1;
+		
+	}
+	public void throttling(){
+		
+		//here the throttle value (with it's embedded angular value) is added to the acceleration	
+		accelx += throttlex;
+		accely += throttley;
 	}
 	
 	public static void main(String[] args) { //everything starts in main
