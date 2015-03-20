@@ -66,8 +66,8 @@ public class Spaceship extends BasicGame {  //this is the class for moving the s
 		rotateshipleft();
 		
 		}
-		throttlex = 0.001f * Math.cos(Math.toRadians(angle)); 
-		throttley = 0.001f * Math.sin(Math.toRadians(angle));
+		throttlex = 0.001f * Math.cos(Math.toRadians(angle))* delta; 
+		throttley = 0.001f * Math.sin(Math.toRadians(angle))* delta;
 			
 		
 		//if the up arrow is being pressed:
