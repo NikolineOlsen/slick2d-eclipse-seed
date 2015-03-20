@@ -42,11 +42,17 @@ public class Lander extends BasicGame {
 		arg1.drawImage(bg, bgPosX,bgPosY); // draws background somewhat centralized
 		
 		
-		arg1.translate(-player.x,-player.y); 
+		arg1.translate(-player.x/4, -player.y/4);
+		//multiple instances of stardust are created to fill out the scene
+		arg1.drawImage(stardust, bgPosX,bgPosY);
+		arg1.drawImage(stardust, bgPosX+stardust.getWidth(),bgPosY);
+		arg1.drawImage(stardust, bgPosX,bgPosY +stardust.getWidth());
+		arg1.drawImage(stardust, bgPosX+stardust.getWidth(),bgPosY +stardust.getWidth());
+		
+		arg1.translate(-player.x/2,-player.y/2); 
 		testplanet.render(arg0, arg1);
 		
-		arg1.translate(-player.x/2, -player.y/2);
-		arg1.drawImage(stardust, bgPosX,bgPosY);
+	
 		
 		arg1.translate(player.x/parallaxConstant, player.y/parallaxConstant);		
 		player.render(arg0, arg1); // calls render method in Spaceship class
@@ -55,6 +61,8 @@ public class Lander extends BasicGame {
 		arg1.drawImage(asteroidbelt, bgPosX, bgPosY);
 		
 		welcome.render(arg0, arg1); // calls render method in GUI
+		
+		//if(player.x >VIEWPORT_SIZE_X) ma
 		
 		
 	}
