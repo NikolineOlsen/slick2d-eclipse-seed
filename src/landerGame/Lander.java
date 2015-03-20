@@ -18,6 +18,8 @@ public class Lander extends BasicGame {
 	GUI welcome = new GUI();
 	planet testplanet;
 	
+	
+	
 	static int xResolution = 1200;
 	static int yResolution = 700;
 
