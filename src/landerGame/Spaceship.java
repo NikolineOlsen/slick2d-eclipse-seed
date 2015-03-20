@@ -40,6 +40,7 @@ public class Spaceship extends BasicGame {  //this is the class for moving the s
 		// TODO Auto-generated method stub
 		//loading the spaceship image:
 		hero = new Image("landerGame/Resources/minispace.png");
+		hero.setCenterOfRotation((hero.getWidth()/2)+7, (hero.getHeight()/2)+90);
 
 	}
 
@@ -90,12 +91,13 @@ public class Spaceship extends BasicGame {  //this is the class for moving the s
 	
 	public void rotateshipleft(){
 		angle -= 1;
+		hero.rotate(-1);
 		
 	}
 	
 	public void rotateshipright(){
 		angle += 1;
-		
+		hero.rotate(1);
 	}
 	public void throttling(){
 		
