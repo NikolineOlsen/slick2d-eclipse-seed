@@ -54,14 +54,14 @@ public class Spaceship extends BasicGame {  //this is the class for moving the s
 		movement();
 		
 		
-		if(input.isKeyDown(Input.KEY_RIGHT))
+		if(input.isKeyDown(Input.KEY_RIGHT ) || input.isKeyDown(Input.KEY_D))
 		{
 			
 			rotateshipright();
 		}
 
 		//if the left arrow is being pressed:
-		if(input.isKeyDown(Input.KEY_LEFT))
+		if(input.isKeyDown(Input.KEY_LEFT) || input.isKeyDown(Input.KEY_A))
 		{
 		
 		rotateshipleft();
@@ -72,7 +72,7 @@ public class Spaceship extends BasicGame {  //this is the class for moving the s
 			
 		
 		//if the up arrow is being pressed:
-		if(input.isKeyDown(Input.KEY_UP))
+		if(input.isKeyDown(Input.KEY_UP) || input.isKeyDown(Input.KEY_W))
 		{
 			throttling();
 	
