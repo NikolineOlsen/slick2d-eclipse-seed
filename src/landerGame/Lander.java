@@ -14,11 +14,13 @@ import org.newdawn.slick.SlickException;
 public class Lander extends BasicGame {
 	
 	Image bg;
+	Image stardust;
+	Image asteroidbelt;
+	
 	Spaceship player = new Spaceship("Player"); //creates new spaceship object. It's methods is called later in this class
 	GUI welcome = new GUI();
 	planet testplanet;
-	Image stardust;
-	Image asteroidbelt;
+	
 	
 	static int VIEWPORT_SIZE_X = 1200;
 	static int VIEWPORT_SIZE_Y = 700;
@@ -59,10 +61,13 @@ public class Lander extends BasicGame {
 		
 		arg1.translate(-player.x*2, -player.y*2);
 		arg1.drawImage(asteroidbelt, bgPosX, bgPosY);
+		arg1.drawImage(asteroidbelt, bgPosX+asteroidbelt.getWidth(),bgPosY);
+		arg1.drawImage(asteroidbelt, bgPosX,bgPosY +asteroidbelt.getWidth());
+		arg1.drawImage(asteroidbelt, bgPosX+asteroidbelt.getWidth(),bgPosY +asteroidbelt.getWidth());
 		
 		welcome.render(arg0, arg1); // calls render method in GUI
 		
-		//if(player.x >VIEWPORT_SIZE_X) ma
+		//if(player.x >VIEWPORT_SIZE_X/3) --> reset player to middle(slowly) 
 		
 		
 	}
