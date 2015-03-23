@@ -14,10 +14,12 @@ public class Spaceship extends BasicGame {  //this is the class for moving the s
 
 	//this is the place where we create all the variables
 	//the game images:
-	Image hero;
+	Image player;
 	float x = 20.0f; //x-coordinates for spaceship
 	float y = 5.0f; // y-coordinates for spaceship
 	float speed = 0.2f; //speed of spaceship
+	int width; //width of player
+	int height; //height of player
 	
 	
 	AffineTransform transformer = new AffineTransform(); //initializing the AffineTransform method, that will help rotate the spaceship
@@ -33,14 +35,14 @@ public class Spaceship extends BasicGame {  //this is the class for moving the s
 	public void render(GameContainer arg0, Graphics g) throws SlickException { //render is called constantly. This is where all graphics is done.
 		// TODO Auto-generated method stub
 		//after loading the spaceship image in "init", we draw it in "render"
-		g.drawImage(hero, x, y); //it's called g, after "Graphics g", above. The spaceship is drawn at location (100,100)
+		g.drawImage(player, x, y); //it's called g, after "Graphics g", above. The spaceship is drawn at location (100,100)
 	}
 
 	@Override
 	public void init(GameContainer arg0) throws SlickException { //init is called when the game starts. This is where we set things up for the game, like load resources like images and sound.
 		// TODO Auto-generated method stub
 		//loading the spaceship image:
-		hero = new Image("landerGame/Resources/minispace.png");
+		player = new Image("landerGame/Resources/minispace.png");
 
 	}
 
@@ -75,11 +77,6 @@ public class Spaceship extends BasicGame {  //this is the class for moving the s
 			y-= speed * delta; //going in the decreasing y-direction. multiplied by delta so the FPS is stabilized for all computers(same speed for all).
 		}
 		
-		//to create an acceleration thrust for the player:
-		//if(input.isKeyDown(Input.KEY_SPACE)&&(input.isKeyDown(Input.KEY_UP)))
-		//{
-			//y-= speed*10; //creates an acceleration for the spaceship in the upwards direction
-		//}
 		
 	
 	    

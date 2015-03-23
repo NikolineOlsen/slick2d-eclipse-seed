@@ -31,7 +31,7 @@ public class Lander extends BasicGame {
 		// TODO  is called constantly. This is where all your graphics is done.
 		
 		arg1.translate(-player.x, -player.y); // makes screen follow character(gives the illusion of it)
-		
+		//hey
 		arg1.drawImage(bg,player.x-xResolution/3,player.y-yResolution/3); // draws background somewhat centralized
 			
 		testplanet.render(arg0, arg1);
@@ -45,7 +45,7 @@ public class Lander extends BasicGame {
 	@Override
 	public void init(GameContainer arg0) throws SlickException {
 		// TODO  is called when the game starts. You can put code here to set things up for your game, such as loading resources like images and sounds.
-		bg = new Image("landerGame/resources/spaceBg2.jpg");
+		bg = new Image("landerGame/resources/spaceBg3.jpg");
 		player.init(arg0); //calls init method in Spaceship
 		testplanet = new planet(1, 200, 100);
 
