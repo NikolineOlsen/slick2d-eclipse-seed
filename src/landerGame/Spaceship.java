@@ -23,8 +23,8 @@ public class Spaceship extends BasicGame {
 	Image ignitionSprite;
 	
 	float speed = 0.2f; //speed of spaceship
-	int width; //width of player
-	int height; //height of player
+	float width; //width of player
+	float height; //height of player
 	
 	
 	AffineTransform transformer = new AffineTransform(); //initializing the AffineTransform method, that will help rotate the spaceship
