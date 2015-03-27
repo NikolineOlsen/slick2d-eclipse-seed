@@ -96,7 +96,7 @@ public class Spaceship extends BasicGame {
 			System.out.println("Throttle is: " + ignition);
 
 		} else {
-			//ignition = false;
+			ignition = false;
 			System.out.println("Throttle is: " + ignition);
 		}
 
