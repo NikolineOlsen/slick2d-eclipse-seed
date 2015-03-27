@@ -10,6 +10,8 @@ import org.newdawn.slick.Image;
 import org.newdawn.slick.Input;
 import org.newdawn.slick.SlickException;
 
+import sun.awt.image.PixelConverter.Bgrx;
+
 //this is the class for moving the spaceship. BasicGame contains all the basics to create a simple game
 public class Spaceship extends BasicGame {
 
@@ -44,27 +46,27 @@ public class Spaceship extends BasicGame {
 
 	}
 
-	
+	@Override
 	public void render(GameContainer arg0, Graphics g) throws SlickException { //render is called constantly. This is where all graphics is done.
 		// TODO Auto-generated method stub
 		//after loading the spaceship image in "init", we draw it in "render"
-		g.drawImage(player, x, y); //it's called g, after "Graphics g", above. The spaceship is drawn at location (100,100)
+		g.drawImage(player, x+Lander.VIEWPORT_SIZE_X/2, y+Lander.VIEWPORT_SIZE_Y/2); //it's called g, after "Graphics g", above. The spaceship is drawn at location (100,100)
  								
 		if (ignition == true) {
-			g.drawImage(ignitionSprite, x + 10, y + 70);
+			g.drawImage(ignitionSprite, x +Lander.VIEWPORT_SIZE_X/2, y + Lander.VIEWPORT_SIZE_Y/2);
 		}
 
 	}
 
-
+	@Override
 	public void init(GameContainer arg0) throws SlickException { //init is called when the game starts. This is where we set things up for the game, like load resources like images and sound.
 		// TODO Auto-generated method stub
 		//loading the spaceship image:
 		player = new Image("landerGame/Resources/minispace.png");
-		player.setCenterOfRotation((player.getWidth() / 2) + 7, (player.getHeight() / 2) + 90);
+		player.setCenterOfRotation((player.getWidth() / 2), (player.getHeight() / 2));
 		// loading ignition sprite with rotation:
 		ignitionSprite = new Image("landerGame/Resources/ignition.png");
-		ignitionSprite.setCenterOfRotation((player.getWidth() / 2) + 7,(player.getHeight() / 2) + 90);
+		ignitionSprite.setCenterOfRotation((player.getWidth() / 2)+200,(player.getHeight() / 2));
 
 	}
 
@@ -99,11 +101,6 @@ public class Spaceship extends BasicGame {
 		}
 
 		
-		//if the up arrow is being pressed:
-		if(input.isKeyDown(Input.KEY_UP))
-		{
-			y-= speed * delta; //going in the decreasing y-direction. multiplied by delta so the FPS is stabilized for all computers(same speed for all).
-		}
 	}
 		
 
