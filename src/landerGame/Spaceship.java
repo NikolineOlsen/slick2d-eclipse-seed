@@ -99,11 +99,6 @@ public class Spaceship extends BasicGame {
 		}
 
 		
-		//if the up arrow is being pressed:
-		if(input.isKeyDown(Input.KEY_UP))
-		{
-			y-= speed * delta; //going in the decreasing y-direction. multiplied by delta so the FPS is stabilized for all computers(same speed for all).
-		}
 	}
 		
 
