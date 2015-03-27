@@ -54,11 +54,11 @@ public class Lander extends BasicGame {
 		arg1.translate(-player.x/2,-player.y/2); 
 		testplanet.render(arg0, arg1);
 		
-	
-		
+			
 		arg1.translate(player.x/parallaxConstant, player.y/parallaxConstant);		
 		player.render(arg0, arg1); // calls render method in Spaceship class
 		
+		//multiple instances of asteroids are created to fill out the scene
 		arg1.translate(-player.x*2, -player.y*2);
 		arg1.drawImage(asteroidbelt, bgPosX, bgPosY);
 		arg1.drawImage(asteroidbelt, bgPosX+asteroidbelt.getWidth(),bgPosY);
