@@ -47,6 +47,14 @@ public class planet {
 		public void render(GameContainer arg0, Graphics arg1) throws SlickException {
 			arg1.drawImage(planetimage,position.x,position.y);
 	}
+		public int width() {
+			// TODO Auto-generated method stub
+			return 0;
+		}
+		public int height() {
+			// TODO Auto-generated method stub
+			return 0;
+		}
 	
 	
 	

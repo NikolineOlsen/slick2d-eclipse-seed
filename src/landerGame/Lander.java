@@ -17,7 +17,7 @@ public class Lander extends BasicGame {
 	Image stardust;
 	Image asteroidbelt;
 	
-	public static Spaceship player = new Spaceship("Player"); //creates new spaceship object. It's methods is called later in this class
+	public Spaceship player = new Spaceship("Player"); //creates new spaceship object. It's methods is called later in this class
 	GUI welcome = new GUI();
 	planet testplanet;
 	

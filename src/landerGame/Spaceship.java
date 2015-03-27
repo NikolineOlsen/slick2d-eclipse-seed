@@ -139,4 +139,25 @@ public class Spaceship extends BasicGame {
 
 	}
 
+
+	public void draw(int x2, int y2) {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+	public int width() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+
+	public int height() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+
+	
+
 }
