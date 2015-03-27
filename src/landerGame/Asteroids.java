@@ -24,7 +24,7 @@ public class Asteroids extends BasicGame {
 	int width; // width of player
 	int height; // height of player
 
-	AffineTransform transformer = new AffineTransform();
+	AffineTransform transformer = new AffineTransform(); 
 
 	public double accelx = 0;
 	public double accely = 0;
@@ -39,13 +39,13 @@ public class Asteroids extends BasicGame {
 	}
 
 	@Override
-	public void render(GameContainer arg0, Graphics g) throws SlickException {
+	public void render(GameContainer arg0, Graphics g) throws SlickException { 
 		g.drawImage(asteroid, x + Lander.VIEWPORT_SIZE_X / 2, y
-				+ Lander.VIEWPORT_SIZE_Y / 2);
+				+ Lander.VIEWPORT_SIZE_Y / 2); 
 	}
 
 	@Override
-	public void init(GameContainer arg0) throws SlickException {
+	public void init(GameContainer arg0) throws SlickException { 
 		// loading the spaceasteroid image:
 		asteroid = new Image("landerGame/Resources/asteroid1.png");
 		asteroid.setCenterOfRotation((asteroid.getWidth() / 2),
@@ -56,22 +56,20 @@ public class Asteroids extends BasicGame {
 	@Override
 	public void update(GameContainer arg0, int delta) throws SlickException {
 
-		float randNum = (float) Math.random();
-		System.out.println("Random number generated: " + randNum);
+		float randNum = (float)Math.random();
+System.out.println("Random number generated: "+randNum);
 		movement();
 
 		if (Math.random() < 0.5) {
 			rotateasteroidright();
 		}
 
-		// if (Math.random() > 0.5) {
-		// rotateasteroidleft();
+			//if (Math.random() > 0.5) {
+			// rotateasteroidleft();
 
-		// }
-		throttlex = Math.random() / 1000 * Math.cos(Math.toRadians(angle))
-				* delta;
-		throttley = Math.random() / 1000 * Math.sin(Math.toRadians(angle))
-				* delta;
+		//}
+		throttlex = Math.random()/1000 * Math.cos(Math.toRadians(angle)) * delta;
+		throttley = Math.random()/1000 * Math.sin(Math.toRadians(angle)) * delta;
 
 		// if the up arrow is being pressed:
 		if (Math.random() > 0.9) {

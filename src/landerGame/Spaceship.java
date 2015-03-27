@@ -94,6 +94,7 @@ public class Spaceship extends BasicGame {
 			throttling();
 			ignition = true;
 			System.out.println("Throttle is: " + ignition);
+			
 
 		} else {
 			ignition = false;
@@ -135,5 +136,6 @@ public class Spaceship extends BasicGame {
 		accely += throttley;
 
 	}
+	
 
 }

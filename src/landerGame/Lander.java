@@ -69,7 +69,7 @@ public class Lander extends BasicGame {
 		
 		welcome.render(arg0, arg1); // calls render method in GUI
 		
-		//if(player.x >VIEWPORT_SIZE_X/3) --> reset player to middle(slowly) 
+		
 		
 		
 	}
@@ -92,6 +92,17 @@ public class Lander extends BasicGame {
 	public void update(GameContainer arg0, int delta) throws SlickException {
 		player.update(arg0, delta); // calls Spaceship class update method, where movement is coded
 		asteroid.update(arg0, delta);
+		
+		//below code will prevent player going over screen edges
+		System.out.println("Player x pos: " + player.x + "Player y pos: " + player.y);
+		if(player.y <-1000) {
+			
+			player.y +=200;
+			player.accely = 0;//instead of this, make stop method in spaceship
+			
+			
+			System.out.println("player out of bounds");
+		}
 	}
 
 	public static void main(String[] args) {
