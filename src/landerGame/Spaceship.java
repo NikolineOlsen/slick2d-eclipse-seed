@@ -40,6 +40,7 @@ public class Spaceship extends BasicGame {
 	public double throttley;
 	public boolean ignition = false;
 
+	public float fuelTank = 500; //starting value of fuel tank of spaceship
 
 	public Spaceship(String title) { // remember to call this in Landers Main
 		super(title);
@@ -94,6 +95,7 @@ public class Spaceship extends BasicGame {
 			throttling();
 			ignition = true;
 			System.out.println("Throttle is: " + ignition);
+			System.out.print("Fuel =" + fuelTank--);
 
 		} else {
 			ignition = false;
@@ -137,22 +139,7 @@ public class Spaceship extends BasicGame {
 	}
 
 
-	public void draw(int x2, int y2) {
-		// TODO Auto-generated method stub
-		
-	}
 
-
-	public int width() {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-
-	public int height() {
-		// TODO Auto-generated method stub
-		return 0;
-	}
 
 
 	
