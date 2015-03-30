@@ -12,13 +12,9 @@ import org.newdawn.slick.SlickException;
 //this is the class for moving the spaceasteroid. BasicGame contains all the basics to create a simple game
 public class Asteroids extends BasicGame {
 
-	// this is the place where we create all the variables
-	// the game images:
 	Image asteroid;
 	float x = 20.0f; // x-coordinates for spaceasteroid
 	float y = 5.0f; // y-coordinates for spaceasteroid
-
-	Image ignitionSprite;
 
 	float speed = 0.2f; // speed of spaceasteroid
 	int width; // width of player
@@ -57,12 +53,12 @@ public class Asteroids extends BasicGame {
 	public void update(GameContainer arg0, int delta) throws SlickException {
 
 		float randNum = (float)Math.random();
-System.out.println("Random number generated: "+randNum);
+		System.out.println("Random number generated: "+randNum);
 		movement();
 
-		if (Math.random() < 0.5) {
+		//if (Math.random() < 0.5) {
 			rotateasteroidright();
-		}
+		//}
 
 			//if (Math.random() > 0.5) {
 			// rotateasteroidleft();
@@ -89,7 +85,7 @@ System.out.println("Random number generated: "+randNum);
 	}
 
 	public void rotateasteroidleft() {
-		angle -= 1;
+		angle -= 0.1;
 		asteroid.rotate(-1);
 
 	}
