@@ -66,7 +66,7 @@ public class Spaceship extends BasicGame {
 		player.setCenterOfRotation((player.getWidth() / 2), (player.getHeight() / 2));
 		// loading ignition sprite with rotation:
 		ignitionSprite = new Image("landerGame/Resources/ignition.png");
-		ignitionSprite.setCenterOfRotation((player.getWidth() / 2)+200,(player.getHeight() / 2));
+		//ignitionSprite.setCenterOfRotation((player.getWidth() / 2)+200,(player.getHeight() / 2));
 
 	}
 
