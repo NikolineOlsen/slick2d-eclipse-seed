@@ -94,8 +94,8 @@ public class Spaceship extends BasicGame {
 		if (input.isKeyDown(Input.KEY_UP) || input.isKeyDown(Input.KEY_W)) {
 			throttling();
 			ignition = true;
-			System.out.println("Throttle is: " + ignition);
-			System.out.print("Fuel =" + fuelTank--);
+			System.out.println("Throttle is: " + ignition + " Fuel level: " + fuelTank--);
+
 
 		} else {
 			ignition = false;
@@ -137,6 +137,7 @@ public class Spaceship extends BasicGame {
 		accely += throttley;
 
 	}
+	
 
 
 
