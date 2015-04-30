@@ -24,6 +24,7 @@ public class Lander extends BasicGame {
 	GUI welcome = new GUI();
 	planet testplanet;
 	Asteroids asteroid = new Asteroids("asteroid");
+	CollisionDetection collision = new CollisionDetection();
 
 	static int VIEWPORT_SIZE_X = 1200;
 	static int VIEWPORT_SIZE_Y = 700;
@@ -58,12 +59,13 @@ public class Lander extends BasicGame {
 
 		arg1.translate(-player.x / 2, -player.y / 2);
 		testplanet.render(arg0, arg1);
-
+		collision.collisionBox(arg0, arg1);//calls collissionBox method in CollisionDetection, needs to be called here in order to follow the updating position of player
+		
 		asteroid.render(arg0, arg1);
 
 		arg1.translate(player.x / parallaxConstant, player.y / parallaxConstant);
 		player.render(arg0, arg1); // calls render method in Spaceship class
-
+		
 		// multiple instances of asteroids are created to fill out the scene
 		arg1.translate(-player.x * 2, -player.y * 2);
 		arg1.drawImage(asteroidbelt, bgPosX, bgPosY);
@@ -73,6 +75,9 @@ public class Lander extends BasicGame {
 				+ asteroidbelt.getWidth());
 
 		welcome.render(arg0, arg1); // calls render method in GUI
+		
+		
+		
 
 	}
 
@@ -97,6 +102,7 @@ public class Lander extends BasicGame {
 									// where movement is coded
 		asteroid.update(arg0, delta);
 		bounds.update(arg0, delta);
+		collision.update(arg0, delta);
 		
 	}
 

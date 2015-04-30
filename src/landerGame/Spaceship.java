@@ -18,7 +18,7 @@ public class Spaceship extends BasicGame {
 
 	//this is the place where we create all the variables
 	//the game images:
-	Image player;
+	public Image player;
 	float x = 20.0f; //x-coordinates for spaceship
 	float y = 5.0f; // y-coordinates for spaceship
 	

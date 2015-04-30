@@ -11,8 +11,8 @@ public class MapBounds {
 	public void update(GameContainer arg0, int delta) throws SlickException {
 		// below code will prevent player going over screen edges
 		//4 is statements for each of the 4 sides of the map
-				System.out.println("Player x pos: " + Lander.player.x + "Player y pos: "
-						+ Lander.player.y);
+				System.out.println("Player x pos: " + Lander.player.x );
+				System.out.println("Player y pos: "+ Lander.player.y);
 				if (Lander.player.y < -1000) {
 					Lander.player.y += 200;
 					Lander.player.accely = 0;
