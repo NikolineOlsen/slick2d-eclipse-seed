@@ -1,5 +1,6 @@
 package landerGame;
 
+
 import java.awt.geom.AffineTransform;
 
 import org.newdawn.slick.AppGameContainer;
@@ -26,7 +27,8 @@ public class Spaceship extends BasicGame {
 	
 	float speed = 0.2f; //speed of spaceship
 	float width; //width of player
-	float height; //height of player
+	float height; //height of player'
+	public int health = 100; //health of player
 	
 	
 	AffineTransform transformer = new AffineTransform(); //initializing the AffineTransform method, that will help rotate the spaceship
@@ -40,7 +42,10 @@ public class Spaceship extends BasicGame {
 	public double throttley;
 	public boolean ignition = false;
 
-	public float fuelTank = 500; //starting value of fuel tank of spaceship
+	
+	public int fuelTank = 150; //starting value of fuel tank of spaceship
+	public int fuelTankLow = 0;
+	
 
 	public Spaceship(String title) { // remember to call this in Landers Main
 		super(title);
@@ -56,7 +61,7 @@ public class Spaceship extends BasicGame {
 		if (ignition == true) {
 			g.drawImage(ignitionSprite, x +Lander.VIEWPORT_SIZE_X/2, y + Lander.VIEWPORT_SIZE_Y/2);
 		}
-
+		
 	}
 
 	@Override
@@ -67,8 +72,11 @@ public class Spaceship extends BasicGame {
 		player.setCenterOfRotation((player.getWidth() / 2), (player.getHeight() / 2));
 		// loading ignition sprite with rotation:
 		ignitionSprite = new Image("landerGame/Resources/ignition.png");
-		ignitionSprite.setCenterOfRotation((player.getWidth() / 2)+200,(player.getHeight() / 2));
+		//ignitionSprite.setCenterOfRotation((player.getWidth() / 2)+200,(player.getHeight() / 2));
 
+		
+		
+		
 	}
 
 	@Override
@@ -102,8 +110,31 @@ public class Spaceship extends BasicGame {
 			System.out.println("Throttle is: " + ignition);
 		}
 
-		
+
+		//fuel code for spaceship:
+		if (fuelTank <= 0) { //as long as fuel is equal or less than zero, the accelx and -y will
+			//be reduced by 1.05 for a smoother stop, when it's out of gas
+
+			accelx = accelx/1.05;
+
+			accely = accely/1.05;
+
+			System.out.println(accelx + " something");
+
+		}
+
+
+
 	}
+		
+		
+		//if ship collides with planet:
+				//if(player.x = planet.size) {
+					//health--;
+				
+
+		
+	
 		
 
 		
@@ -139,7 +170,7 @@ public class Spaceship extends BasicGame {
 	}
 	
 
-
+	
 
 
 
