@@ -43,7 +43,7 @@ public class Spaceship extends BasicGame {
 	public boolean ignition = false;
 
 	
-	public int fuelTank = 150; //starting value of fuel tank of spaceship
+	public int fuelTank = 1000; //starting value of fuel tank of spaceship
 	public int fuelTankLow = 0;
 	
 
@@ -119,10 +119,8 @@ public class Spaceship extends BasicGame {
 
 			accely = accely/1.05;
 
-			System.out.println(accelx + " something");
-
+			
 		}
-
 
 
 	}
