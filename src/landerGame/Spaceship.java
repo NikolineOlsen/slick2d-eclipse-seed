@@ -20,7 +20,7 @@ public class Spaceship extends BasicGame {
 
 	//this is the place where we create all the variables
 	//the game images:
-	Image player;
+	public Image player;
 	float x = 20.0f; //x-coordinates for spaceship
 	float y = 5.0f; // y-coordinates for spaceship
 	
@@ -29,7 +29,7 @@ public class Spaceship extends BasicGame {
 	float speed = 0.2f; //speed of spaceship
 	float width; //width of player
 	float height; //height of player'
-	public int health = 100; //health of player
+	public float health = 100; //health of player
 	
 	
 	AffineTransform transformer = new AffineTransform(); //initializing the AffineTransform method, that will help rotate the spaceship
@@ -75,9 +75,9 @@ public class Spaceship extends BasicGame {
 		ignitionSprite = new Image("landerGame/Resources/ignition.png");
 		//ignitionSprite.setCenterOfRotation((player.getWidth() / 2)+200,(player.getHeight() / 2));
 
-		
-		
-		
+
+
+
 	}
 
 	@Override
@@ -116,33 +116,43 @@ public class Spaceship extends BasicGame {
 		if (fuelTank <= 0) { //as long as fuel is equal or less than zero, the accelx and -y will
 			//be reduced by 1.05 for a smoother stop, when it's out of gas
 
+
 			accelx = accelx/1.05;
 
 			accely = accely/1.05;
 
-			System.out.println("accel " + accelx + " Fuel " + fuelTank );
+			stopShip(); 
+
+
+
+
+
+			if (CollisionDetection.collides == true){ // if ship collides with planet, it stops
+
+				//land ship
+				x += accelx - Lander.testplanet.gx;
+				y += accely - Lander.testplanet.gy; 
+				if((accelx+accely)/2 > -0.5){//if ship collides and goes too fast, health is reduced
+					health -= 0.2f;
+				}
+			} if(health <=0) { // if health is below 0, player sprites are removed(made invisible)
+				player.setAlpha(0);
+				Lander.player.ignitionSprite.setAlpha(0);
+
+
+			} if (health <0){
+				health = 0; // stops health counter going down when reaching 0
+			} 
+			System.out.println("Accel "+(accelx+accely)/2 );
+
 		}
-		
-		
-	
 	}
-		
-		
-		//if ship collides with planet:
-				//if(player.x = planet.size) {
-					//health--;
-				
 
-		
-	
-		
-
-		
 		
 
 	public void movement() { // This function moves the ship in it's current direction	
-		x += accelx;
-		y += accely;
+		x += accelx + Lander.testplanet.gx;
+		y += accely + Lander.testplanet.gy; 
 
 		accelx = accelx / 1.001;
 		accely = accely / 1.001;
@@ -152,6 +162,8 @@ public class Spaceship extends BasicGame {
 		angle -= 1;
 		player.rotate(-1);
 		ignitionSprite.rotate(-1);
+		
+		
 
 	}
 
@@ -169,7 +181,11 @@ public class Spaceship extends BasicGame {
 
 	}
 	
-
+	public void stopShip(){ //method for stopping ship
+		accelx = accelx/1.05;
+		accely = accely/1.05;
+		
+	}
 	
 
 

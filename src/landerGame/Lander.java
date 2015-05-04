@@ -14,24 +14,24 @@ import org.newdawn.slick.SlickException;
 
 public class Lander extends BasicGame {
 
-	
-	
-
 
 	Image bg;
 	Image stardust;
 	Image asteroidbelt;
 	
 	
-
 	public static Spaceship player = new Spaceship("Player"); // creates new spaceship object.
 	
 							
 	MapBounds bounds = new MapBounds();
 	GUI welcome = new GUI();
-	planet testplanet;
+	public static planet testplanet;
 	Asteroids asteroid = new Asteroids("asteroid");
+
 	Collision Shape;
+
+	public static CollisionDetection collision = new CollisionDetection("CollisionDetector");
+
 
 
 	static int VIEWPORT_SIZE_X = 1200;
@@ -69,12 +69,13 @@ public class Lander extends BasicGame {
 
 		arg1.translate(-player.x / 2, -player.y / 2);
 		testplanet.render(arg0, arg1);
-
+		
 		asteroid.render(arg0, arg1);
 
 		arg1.translate(player.x / parallaxConstant, player.y / parallaxConstant);
 		player.render(arg0, arg1); // calls render method in Spaceship class
-
+		collision.render(arg0, arg1);
+		
 		// multiple instances of asteroids are created to fill out the scene
 		arg1.translate(-player.x * 2, -player.y * 2);
 		arg1.drawImage(asteroidbelt, bgPosX, bgPosY);
@@ -82,7 +83,8 @@ public class Lander extends BasicGame {
 		arg1.drawImage(asteroidbelt, bgPosX, bgPosY + asteroidbelt.getWidth());
 		arg1.drawImage(asteroidbelt, bgPosX + asteroidbelt.getWidth(), bgPosY
 				+ asteroidbelt.getWidth());
-
+		
+		
 		welcome.render(arg0, arg1); // calls render method in GUI
 		
 		
@@ -97,14 +99,14 @@ public class Lander extends BasicGame {
 		// sounds.
 		bg = new Image("landerGame/resources/spaceBg3.jpg");
 		player.init(arg0); // calls init method in Spaceship
-		testplanet = new planet(1, 200, 100);
+		testplanet = new planet(1, -150, -100);
 		asteroid.init(arg0);
 		welcome.init(arg0);
 		stardust = new Image("landerGame/resources/stardust.png");
 		asteroidbelt = new Image("landerGame/resources/asteroidbelt1.png");
 		
 		
-		
+		collision.init(arg0);
 		
 	
 	} 	
@@ -113,21 +115,17 @@ public class Lander extends BasicGame {
 	@Override
 	public void update(GameContainer arg0, int delta) throws SlickException {
 		player.update(arg0, delta); // calls Spaceship class update method,
-									// where movement is coded
 		asteroid.update(arg0, delta);
 		bounds.update(arg0, delta);
-		
+		collision.update(arg0, delta);
+		testplanet.update(arg0,delta);
 	}
 
 	public static void main(String[] args) {
 		Lander game = new Lander("Lander Game");
 		try {
 			AppGameContainer container = new AppGameContainer(game);
-			container.setDisplayMode(VIEWPORT_SIZE_X, VIEWPORT_SIZE_Y, false); // size
-																				// for
-																				// the
-																				// game
-																				// window
+			container.setDisplayMode(VIEWPORT_SIZE_X, VIEWPORT_SIZE_Y, false); // size for the game window
 			container.setTargetFrameRate(60);
 			container.start();
 		} catch (SlickException e) {
