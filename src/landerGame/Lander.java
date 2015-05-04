@@ -94,7 +94,7 @@ public class Lander extends BasicGame {
 		// sounds.
 		bg = new Image("landerGame/resources/spaceBg3.jpg");
 		player.init(arg0); // calls init method in Spaceship
-		testplanet = new planet(1, 0, 0);
+		testplanet = new planet(1, -150, -100);
 		asteroid.init(arg0);
 		welcome.init(arg0);
 		stardust = new Image("landerGame/resources/stardust.png");
@@ -112,21 +112,15 @@ public class Lander extends BasicGame {
 		player.update(arg0, delta); // calls Spaceship class update method,
 		asteroid.update(arg0, delta);
 		bounds.update(arg0, delta);
-		
-		
 		collision.update(arg0, delta);
-		
+		testplanet.update(arg0,delta);
 	}
 
 	public static void main(String[] args) {
 		Lander game = new Lander("Lander Game");
 		try {
 			AppGameContainer container = new AppGameContainer(game);
-			container.setDisplayMode(VIEWPORT_SIZE_X, VIEWPORT_SIZE_Y, false); // size
-																				// for
-																				// the
-																				// game
-																				// window
+			container.setDisplayMode(VIEWPORT_SIZE_X, VIEWPORT_SIZE_Y, false); // size for the game window
 			container.setTargetFrameRate(60);
 			container.start();
 		} catch (SlickException e) {

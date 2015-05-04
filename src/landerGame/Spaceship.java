@@ -116,16 +116,23 @@ public class Spaceship extends BasicGame {
 			//be reduced by 1.05 for a smoother stop, when it's out of gas
 			stopShip(); 
 		}
-		if (CollisionDetection.collides == true){ // if ship collides with planet, it loses health
-			health -= 0.2f;
-			stopShip();
+		if (CollisionDetection.collides == true){ // if ship collides with planet, it stops
+			
+			//land ship
+			x += accelx - Lander.testplanet.gx;
+			y += accely - Lander.testplanet.gy; 
+			if((accelx+accely)/2 > -0.5){//if ship collides and goes too fast, health is reduced
+				health -= 0.2f;
+			}
 		} if(health <=0) { // if health is below 0, player sprites are removed(made invisible)
 			player.setAlpha(0);
 			Lander.player.ignitionSprite.setAlpha(0);
 			
-		} if (health <0)
+			
+		} if (health <0){
 			health = 0; // stops health counter going down when reaching 0
-
+		} 
+		System.out.println("Accel "+(accelx+accely)/2 );
 
 	}
 
@@ -137,8 +144,8 @@ public class Spaceship extends BasicGame {
 		
 
 	public void movement() { // This function moves the ship in it's current direction	
-		x += accelx;
-		y += accely;
+		x += accelx + Lander.testplanet.gx;
+		y += accely + Lander.testplanet.gy; 
 
 		accelx = accelx / 1.001;
 		accely = accely / 1.001;

@@ -9,7 +9,8 @@ import org.newdawn.slick.geom.Vector2f;
 
 public class planet {
 
-	
+	public float gx;
+	public float gy;
 	
 	int gravity;
 	
@@ -54,6 +55,10 @@ public class planet {
 		public int height() {
 			// TODO Auto-generated method stub
 			return 0;
+		}
+		public void update(GameContainer arg0, int delta) {
+			gx = ((position.x-300) - Lander.player.x)/100;
+			gy = ((position.y-50) - Lander.player.y)/100;
 		}
 	
 	
