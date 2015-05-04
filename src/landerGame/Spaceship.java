@@ -1,5 +1,6 @@
 package landerGame;
 
+
 import java.awt.geom.AffineTransform;
 
 import org.newdawn.slick.AppGameContainer;
@@ -25,8 +26,9 @@ public class Spaceship extends BasicGame {
 	Image ignitionSprite;
 	
 	float speed = 0.2f; //speed of spaceship
-	int width; //width of player
-	int height; //height of player
+	float width; //width of player
+	float height; //height of player'
+	public float health = 100; //health of player
 	
 	
 	AffineTransform transformer = new AffineTransform(); //initializing the AffineTransform method, that will help rotate the spaceship
@@ -40,6 +42,10 @@ public class Spaceship extends BasicGame {
 	public double throttley;
 	public boolean ignition = false;
 
+	
+	public int fuelTank = 1000; //starting value of fuel tank of spaceship
+	public int fuelTankLow = 0;
+	
 
 	public Spaceship(String title) { // remember to call this in Landers Main
 		super(title);
@@ -55,7 +61,7 @@ public class Spaceship extends BasicGame {
 		if (ignition == true) {
 			g.drawImage(ignitionSprite, x +Lander.VIEWPORT_SIZE_X/2, y + Lander.VIEWPORT_SIZE_Y/2);
 		}
-
+		
 	}
 
 	@Override
@@ -68,6 +74,9 @@ public class Spaceship extends BasicGame {
 		ignitionSprite = new Image("landerGame/Resources/ignition.png");
 		//ignitionSprite.setCenterOfRotation((player.getWidth() / 2)+200,(player.getHeight() / 2));
 
+		
+		
+		
 	}
 
 	@Override
@@ -93,16 +102,35 @@ public class Spaceship extends BasicGame {
 		if (input.isKeyDown(Input.KEY_UP) || input.isKeyDown(Input.KEY_W)) {
 			throttling();
 			ignition = true;
-			System.out.println("Throttle is: " + ignition);
-			
+			System.out.println("Throttle is: " + ignition + " Fuel level: " + fuelTank--);
+
 
 		} else {
 			ignition = false;
 			System.out.println("Throttle is: " + ignition);
 		}
 
-		
+
+		//fuel code for spaceship:
+		if (fuelTank <= 0) { //as long as fuel is equal or less than zero, the accelx and -y will
+			//be reduced by 1.05 for a smoother stop, when it's out of gas
+			stopShip(); 
+		}
+		if (CollisionDetection.collides == true){ // if ship collides with planet, it loses health
+			health -= 0.2f;
+			stopShip();
+		} if(health <=0) { // if health is below 0, player sprites are removed(made invisible)
+			player.setAlpha(0);
+			Lander.player.ignitionSprite.setAlpha(0);
+			
+		} if (health <0)
+			health = 0; // stops health counter going down when reaching 0
+
+
 	}
+
+		
+	
 		
 
 		
@@ -120,6 +148,8 @@ public class Spaceship extends BasicGame {
 		angle -= 1;
 		player.rotate(-1);
 		ignitionSprite.rotate(-1);
+		
+		
 
 	}
 
@@ -136,6 +166,16 @@ public class Spaceship extends BasicGame {
 		accely += throttley;
 
 	}
+	
+	public void stopShip(){ //method for stopping ship
+		accelx = accelx/1.05;
+		accely = accely/1.05;
+		
+	}
+	
+
+
+
 	
 
 }

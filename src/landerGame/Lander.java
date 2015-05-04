@@ -14,23 +14,28 @@ import org.newdawn.slick.SlickException;
 
 public class Lander extends BasicGame {
 
+
 	Image bg;
 	Image stardust;
 	Image asteroidbelt;
-
+	
+	
 	public static Spaceship player = new Spaceship("Player"); // creates new spaceship object.
 							
 	MapBounds bounds = new MapBounds();
 	GUI welcome = new GUI();
-	planet testplanet;
+	public static planet testplanet;
 	Asteroids asteroid = new Asteroids("asteroid");
-	CollisionDetection collision = new CollisionDetection();
+	public static CollisionDetection collision = new CollisionDetection("CollisionDetector");
+
 
 	static int VIEWPORT_SIZE_X = 1200;
 	static int VIEWPORT_SIZE_Y = 700;
 
 	float bgPosX = player.x - VIEWPORT_SIZE_X / 3;
 	float bgPosY = player.y - VIEWPORT_SIZE_Y / 3;
+	
+	
 
 	float parallaxConstant = 30;
 
@@ -59,12 +64,12 @@ public class Lander extends BasicGame {
 
 		arg1.translate(-player.x / 2, -player.y / 2);
 		testplanet.render(arg0, arg1);
-		collision.collisionBox(arg0, arg1);//calls collissionBox method in CollisionDetection, needs to be called here in order to follow the updating position of player
 		
 		asteroid.render(arg0, arg1);
 
 		arg1.translate(player.x / parallaxConstant, player.y / parallaxConstant);
 		player.render(arg0, arg1); // calls render method in Spaceship class
+		collision.render(arg0, arg1);
 		
 		// multiple instances of asteroids are created to fill out the scene
 		arg1.translate(-player.x * 2, -player.y * 2);
@@ -73,11 +78,12 @@ public class Lander extends BasicGame {
 		arg1.drawImage(asteroidbelt, bgPosX, bgPosY + asteroidbelt.getWidth());
 		arg1.drawImage(asteroidbelt, bgPosX + asteroidbelt.getWidth(), bgPosY
 				+ asteroidbelt.getWidth());
-
+		
+		
 		welcome.render(arg0, arg1); // calls render method in GUI
 		
 		
-		
+
 
 	}
 
@@ -88,20 +94,26 @@ public class Lander extends BasicGame {
 		// sounds.
 		bg = new Image("landerGame/resources/spaceBg3.jpg");
 		player.init(arg0); // calls init method in Spaceship
-		testplanet = new planet(1, 200, 100);
+		testplanet = new planet(1, 0, 0);
 		asteroid.init(arg0);
-
+		welcome.init(arg0);
 		stardust = new Image("landerGame/resources/stardust.png");
 		asteroidbelt = new Image("landerGame/resources/asteroidbelt1.png");
+		
+		
+		collision.init(arg0);
+		
+	
+	} 	
 
-	}
 
 	@Override
 	public void update(GameContainer arg0, int delta) throws SlickException {
 		player.update(arg0, delta); // calls Spaceship class update method,
-									// where movement is coded
 		asteroid.update(arg0, delta);
 		bounds.update(arg0, delta);
+		
+		
 		collision.update(arg0, delta);
 		
 	}
