@@ -15,7 +15,7 @@ public class planet {
 	
 	int fuelamount;
 	
-	Image planetimage;
+	static Image planetimage;
 	
 	Vector2f position;
 	

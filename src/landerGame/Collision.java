@@ -4,6 +4,7 @@
 package landerGame;
 
 import java.awt.Rectangle;
+import java.awt.Shape;
 
 import org.lwjgl.util.glu.Sphere;
 import org.newdawn.slick.GameContainer;
@@ -13,14 +14,21 @@ import org.newdawn.slick.geom.Ellipse;
 
 
 public class Collision {
+	{
 	
-	planet testplanet;
-	Spaceship player;
-	float x;
-	float y;
+	Image player;
+	Image planetimage;
 	
+	
+	if (((Shape) landerGame.planet.planetimage).getBounds2D().intersects(((Shape) Lander.player).getBounds2D()) )
+	{
+	    System.out.println("true somethinggggg ");
+	   
+}
+}
+}
 		
-	Rectangle playerSquare = new Rectangle();
+	/*Rectangle playerSquare = new Rectangle();
 	Sphere planetSpehere = new Sphere();
 	
 	
@@ -44,7 +52,7 @@ public class Collision {
 
        // return playerSquare.intersects(planetSphere);
 
-	}
+	} */
 	
 		
 

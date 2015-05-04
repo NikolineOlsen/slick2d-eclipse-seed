@@ -1,6 +1,7 @@
 package landerGame;
 
 
+import java.awt.Shape;
 import java.awt.geom.AffineTransform;
 
 import org.newdawn.slick.AppGameContainer;
@@ -43,8 +44,8 @@ public class Spaceship extends BasicGame {
 	public boolean ignition = false;
 
 	
-	public int fuelTank = 1000; //starting value of fuel tank of spaceship
-	public int fuelTankLow = 0;
+	public int fuelTank = 50; //starting value of fuel tank of spaceship
+	public int fuelTankLow = 0; //new value that switches place with fuelTank when fuelTank  = 0
 	
 
 	public Spaceship(String title) { // remember to call this in Landers Main
@@ -119,10 +120,11 @@ public class Spaceship extends BasicGame {
 
 			accely = accely/1.05;
 
-			
+			System.out.println("accel " + accelx + " Fuel " + fuelTank );
 		}
-
-
+		
+		
+	
 	}
 		
 		

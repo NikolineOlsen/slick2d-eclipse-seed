@@ -25,11 +25,13 @@ public class Lander extends BasicGame {
 	
 
 	public static Spaceship player = new Spaceship("Player"); // creates new spaceship object.
+	
 							
 	MapBounds bounds = new MapBounds();
 	GUI welcome = new GUI();
 	planet testplanet;
 	Asteroids asteroid = new Asteroids("asteroid");
+	Collision Shape;
 
 
 	static int VIEWPORT_SIZE_X = 1200;
