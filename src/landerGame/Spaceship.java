@@ -139,8 +139,8 @@ public class Spaceship extends BasicGame {
 		
 
 	public void movement() { // This function moves the ship in it's current direction	
-		x += accelx;
-		y += accely;
+		x += accelx + Lander.testplanet.gx;
+		y += accely + Lander.testplanet.gy; 
 
 		accelx = accelx / 1.001;
 		accely = accely / 1.001;

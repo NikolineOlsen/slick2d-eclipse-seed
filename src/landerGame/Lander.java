@@ -28,7 +28,7 @@ public class Lander extends BasicGame {
 							
 	MapBounds bounds = new MapBounds();
 	GUI welcome = new GUI();
-	planet testplanet;
+	public static planet testplanet;
 	Asteroids asteroid = new Asteroids("asteroid");
 
 
@@ -114,7 +114,7 @@ public class Lander extends BasicGame {
 									// where movement is coded
 		asteroid.update(arg0, delta);
 		bounds.update(arg0, delta);
-		
+		testplanet.update(arg0,delta);
 	}
 
 	public static void main(String[] args) {
