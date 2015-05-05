@@ -47,6 +47,7 @@ public class Spaceship extends BasicGame {
 
 	public int fuelTank = 1000; //starting value of fuel tank of spaceship
 	public int fuelTankLow = 0;//new value that switches place with fuelTank when fuelTank  = 0
+	public int platformFuel;
 	public boolean shipTooFast;
 	
 
@@ -137,12 +138,39 @@ public class Spaceship extends BasicGame {
 				shipTooFast = true;
 				health -= 0.2f;
 			}
-		} if(health <=0) { // if health is below 0, player sprites are removed(made invisible)
+
+
+		} 
+
+		//if ships angle is off it loses life, it the angle is right it gets fuel, when landing on platform
+		if ( CollisionDetection.collides2 == true && angle <= -120) {
+			
+			health -= 1.0f;
+			
+		}
+		else if (CollisionDetection.collides2 == true && angle >= 120) {
+			
+			health -= 1.0f;
+		}
+		else if (CollisionDetection.collides2 == true) {
+			
+			
+			fuelTank = platformFuel+fuelTank;
+			
+			if (platformFuel == 0) {
+				
+				//exit the thing. no more fuel...
+			}
+			
+		}
+
+
+		if(health <=0) { // if health is below 0, player sprites are removed(made invisible)
 			player.setAlpha(0);
 
 			ignitionSprite.setAlpha(0);
-			
-			
+
+
 
 		} if (health <0){
 			health = 0; // stops health counter going down when reaching 0
@@ -151,6 +179,8 @@ public class Spaceship extends BasicGame {
 
 
 	}
+	
+	
 
 		
 

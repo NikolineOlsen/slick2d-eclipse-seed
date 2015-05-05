@@ -108,7 +108,7 @@ public class Lander extends BasicGame {
 		gui.init(arg0);
 		stardust = new Image("landerGame/resources/stardust.png");
 		asteroidbelt = new Image("landerGame/resources/asteroidbelt1.png");
-		platform = new Platform(1, 10, -230);
+		platform = new Platform(1, 75, -130);
 		
 		collision.init(arg0);
 		

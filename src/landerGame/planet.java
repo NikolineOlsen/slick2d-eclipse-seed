@@ -20,7 +20,7 @@ public class planet {
 	
 	static Image planetimage;
 	
-	//public static Rectangle platform = null; 
+	
 	
 	Vector2f position;
 	
