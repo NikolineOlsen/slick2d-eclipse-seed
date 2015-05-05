@@ -33,12 +33,7 @@ public class CollisionDetection extends BasicGame {
 		g.setColor(new Color(255,255,255,0.2f));
 		g.fill(shipCollider);
 		
-		if(collides == true){
-			g.setColor(Color.red);
-			g.drawString("Your spaceship is taking damage", 50, 50);
-		} if(Lander.player.health <=0){
-			g.drawString("Your spaceship has been destroyed", 50, 70);
-		}
+		
 		
 		g.resetTransform();
 		g.drawString("Collides: "+collides, 10, 40); //for debugging collision

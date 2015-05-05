@@ -23,7 +23,7 @@ public class Lander extends BasicGame {
 	public static Spaceship player = new Spaceship("Player"); // creates new spaceship object.
 							
 	MapBounds bounds = new MapBounds();
-	GUI welcome = new GUI();
+	GUI gui = new GUI();
 	public static planet testplanet;
 	Asteroids asteroid = new Asteroids("asteroid");
 	public static CollisionDetection collision = new CollisionDetection("CollisionDetector");
@@ -80,7 +80,7 @@ public class Lander extends BasicGame {
 				+ asteroidbelt.getWidth());
 		
 		
-		welcome.render(arg0, arg1); // calls render method in GUI
+		gui.render(arg0, arg1); // calls render method in GUI
 		
 		
 
@@ -96,7 +96,7 @@ public class Lander extends BasicGame {
 		player.init(arg0); // calls init method in Spaceship
 		testplanet = new planet(1, -150, -100);
 		asteroid.init(arg0);
-		welcome.init(arg0);
+		gui.init(arg0);
 		stardust = new Image("landerGame/resources/stardust.png");
 		asteroidbelt = new Image("landerGame/resources/asteroidbelt1.png");
 		
@@ -114,12 +114,16 @@ public class Lander extends BasicGame {
 		bounds.update(arg0, delta);
 		collision.update(arg0, delta);
 		testplanet.update(arg0,delta);
+		
+		gui.update(arg0, delta);
+		
+		
 	}
 
 	public static void main(String[] args) {
 		Lander game = new Lander("Lander Game");
 		try {
-			AppGameContainer container = new AppGameContainer(game);
+		AppGameContainer container = new AppGameContainer(game);
 			container.setDisplayMode(VIEWPORT_SIZE_X, VIEWPORT_SIZE_Y, false); // size for the game window
 			container.setTargetFrameRate(60);
 			container.start();

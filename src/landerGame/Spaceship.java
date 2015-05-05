@@ -45,6 +45,8 @@ public class Spaceship extends BasicGame {
 	
 	public int fuelTank = 1000; //starting value of fuel tank of spaceship
 	public int fuelTankLow = 0;
+	public boolean shipTooFast;
+	
 	
 
 	public Spaceship(String title) { // remember to call this in Landers Main
@@ -61,7 +63,6 @@ public class Spaceship extends BasicGame {
 		if (ignition == true) {
 			g.drawImage(ignitionSprite, x +Lander.VIEWPORT_SIZE_X/2, y + Lander.VIEWPORT_SIZE_Y/2);
 			ignitionSprite.setCenterOfRotation(player.getCenterOfRotationX(),player.getCenterOfRotationY()); //sets ignitionsprites center of rotation to the same as the spaceship as defined in init
-
 		}
 		
 	}
@@ -120,11 +121,12 @@ public class Spaceship extends BasicGame {
 			x += accelx - Lander.testplanet.gx;
 			y += accely - Lander.testplanet.gy; 
 			if((accelx+accely)/2 > -0.5){//if ship collides and goes too fast, health is reduced
+				shipTooFast = true;
 				health -= 0.2f;
 			}
 		} if(health <=0) { // if health is below 0, player sprites are removed(made invisible)
 			player.setAlpha(0);
-			Lander.player.ignitionSprite.setAlpha(0);
+			ignitionSprite.setAlpha(0);
 			
 			
 		} if (health <0){
@@ -142,6 +144,7 @@ public class Spaceship extends BasicGame {
 		
 
 	public void movement() { // This function moves the ship in it's current direction	
+		
 		x += accelx + Lander.testplanet.gx;
 		y += accely + Lander.testplanet.gy; 
 
@@ -170,6 +173,7 @@ public class Spaceship extends BasicGame {
 		// to the acceleration
 		accelx += throttlex;
 		accely += throttley;
+		
 
 	}
 	
