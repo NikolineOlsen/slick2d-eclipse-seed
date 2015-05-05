@@ -20,6 +20,7 @@ public class Lander extends BasicGame {
 	Image asteroidbelt;
 	
 	
+	
 	public static Spaceship player = new Spaceship("Player"); // creates new spaceship object.
 	
 							
@@ -27,6 +28,7 @@ public class Lander extends BasicGame {
 	GUI welcome = new GUI();
 	public static planet testplanet;
 	Asteroids asteroid = new Asteroids("asteroid");
+	public static Platform platform;
 
 	Collision Shape;
 
@@ -71,6 +73,8 @@ public class Lander extends BasicGame {
 		testplanet.render(arg0, arg1);
 		
 		asteroid.render(arg0, arg1);
+		
+		platform.render(arg0, arg1);
 
 		arg1.translate(player.x / parallaxConstant, player.y / parallaxConstant);
 		player.render(arg0, arg1); // calls render method in Spaceship class
@@ -104,7 +108,7 @@ public class Lander extends BasicGame {
 		welcome.init(arg0);
 		stardust = new Image("landerGame/resources/stardust.png");
 		asteroidbelt = new Image("landerGame/resources/asteroidbelt1.png");
-		
+		platform = new Platform(1, 10, -200);
 		
 		collision.init(arg0);
 		
@@ -119,6 +123,7 @@ public class Lander extends BasicGame {
 		bounds.update(arg0, delta);
 		collision.update(arg0, delta);
 		testplanet.update(arg0,delta);
+		platform.update(arg0, delta);
 	}
 
 	public static void main(String[] args) {

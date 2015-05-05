@@ -44,7 +44,7 @@ public class Spaceship extends BasicGame {
 	public boolean ignition = false;
 
 	
-	public int fuelTank = 50; //starting value of fuel tank of spaceship
+	public int fuelTank = 500; //starting value of fuel tank of spaceship
 	public int fuelTankLow = 0; //new value that switches place with fuelTank when fuelTank  = 0
 	
 
@@ -113,39 +113,37 @@ public class Spaceship extends BasicGame {
 
 
 		//fuel code for spaceship:
-		if (fuelTank <= 0) { //as long as fuel is equal or less than zero, the accelx and -y will
+		if (fuelTank <= 0) { //if the fuel is equal or less than zero, the accelx and -y will
 			//be reduced by 1.05 for a smoother stop, when it's out of gas
 
 
 			accelx = accelx/1.05;
-
 			accely = accely/1.05;
-
 			stopShip(); 
 
-
-
-
-
-			if (CollisionDetection.collides == true){ // if ship collides with planet, it stops
-
-				//land ship
-				x += accelx - Lander.testplanet.gx;
-				y += accely - Lander.testplanet.gy; 
-				if((accelx+accely)/2 > -0.5){//if ship collides and goes too fast, health is reduced
-					health -= 0.2f;
-				}
-			} if(health <=0) { // if health is below 0, player sprites are removed(made invisible)
-				player.setAlpha(0);
-				Lander.player.ignitionSprite.setAlpha(0);
-
-
-			} if (health <0){
-				health = 0; // stops health counter going down when reaching 0
-			} 
-			System.out.println("Accel "+(accelx+accely)/2 );
-
 		}
+
+
+
+		if (CollisionDetection.collides == true){ // if ship collides with planet, it stops
+
+			//land ship
+			x += accelx - Lander.testplanet.gx;
+			y += accely - Lander.testplanet.gy; 
+			if((accelx+accely)/2 > -0.5){//if ship collides and goes too fast, health is reduced
+				health -= 0.2f;
+			}
+		} if(health <=0) { // if health is below 0, player sprites are removed(made invisible)
+			player.setAlpha(0);
+			Lander.player.ignitionSprite.setAlpha(0);
+
+
+		} if (health <0){
+			health = 0; // stops health counter going down when reaching 0
+		} 
+		System.out.println("Accel "+(accelx+accely)/2 );
+
+
 	}
 
 		

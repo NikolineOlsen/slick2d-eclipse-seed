@@ -40,6 +40,9 @@ public class CollisionDetection extends BasicGame {
 		
 		g.resetTransform();
 		g.drawString("Collides: "+collides, 10, 40); //for debugging collision
+		
+		
+		
 	}
 
 	@Override
@@ -47,6 +50,7 @@ public class CollisionDetection extends BasicGame {
 		planetCollider = new Circle(0,0,Lander.testplanet.planetimage.getWidth()/2);
 		
 		shipCollider = new Rectangle(0,0,Lander.player.player.getWidth(),Lander.player.player.getHeight()/2); //needs to get values from player png size this way
+		
 		
 	}
 

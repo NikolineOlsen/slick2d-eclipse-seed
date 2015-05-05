@@ -1,10 +1,12 @@
 package landerGame;
 
 //import org.newdawn.slick.BasicGame;
+import org.newdawn.slick.Color;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
 import org.newdawn.slick.SlickException;
+import org.newdawn.slick.geom.Rectangle;
 import org.newdawn.slick.geom.Vector2f;
 
 public class planet {
@@ -18,7 +20,11 @@ public class planet {
 	
 	static Image planetimage;
 	
+	//public static Rectangle platform = null; 
+	
 	Vector2f position;
+	
+	
 	
 	public planet(int size,int xlocation, int ylocation){
 		
@@ -46,7 +52,14 @@ public class planet {
 		}
 	}
 		public void render(GameContainer arg0, Graphics arg1) throws SlickException {
+
+			
+
 			arg1.drawImage(planetimage,position.x,position.y);
+			
+			
+			
+			
 	}
 		public int width() {
 			// TODO Auto-generated method stub
@@ -61,8 +74,18 @@ public class planet {
 			gy = ((position.y-50) - Lander.player.y)/100;
 		}
 	
+		
+		
+		
+		
+		
 	
-	
+		public void init(GameContainer arg0) throws SlickException {
+			
+			
+			
+		}
+		
 	
 	
 }
