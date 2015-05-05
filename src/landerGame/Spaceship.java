@@ -60,20 +60,19 @@ public class Spaceship extends BasicGame {
  								
 		if (ignition == true) {
 			g.drawImage(ignitionSprite, x +Lander.VIEWPORT_SIZE_X/2, y + Lander.VIEWPORT_SIZE_Y/2);
+			ignitionSprite.setCenterOfRotation(player.getCenterOfRotationX(),player.getCenterOfRotationY()); //sets ignitionsprites center of rotation to the same as the spaceship as defined in init
+
 		}
 		
 	}
 
 	@Override
 	public void init(GameContainer arg0) throws SlickException { //init is called when the game starts. This is where we set things up for the game, like load resources like images and sound.
-		// TODO Auto-generated method stub
 		//loading the spaceship image:
 		player = new Image("landerGame/Resources/minispace.png");
-		player.setCenterOfRotation((player.getWidth() / 2), (player.getHeight() / 2));
-		// loading ignition sprite with rotation:
-		ignitionSprite = new Image("landerGame/Resources/ignition.png");
-		//ignitionSprite.setCenterOfRotation((player.getWidth() / 2)+200,(player.getHeight() / 2));
-
+		player.setCenterOfRotation((player.getWidth() /2), (player.getHeight() / 3)-10); // sets point of rotation on player, is a bit offset because the image is heigher than the spaceship sprite
+		ignitionSprite = new Image("landerGame/Resources/ignition.png");// loading ignition sprite 
+		
 		
 		
 		
@@ -81,7 +80,6 @@ public class Spaceship extends BasicGame {
 
 	@Override
 	public void update(GameContainer arg0, int delta) throws SlickException {
-
 		Input input = arg0.getInput(); // asks Slick2D what keys are being pressed
 
 		movement();
@@ -164,6 +162,7 @@ public class Spaceship extends BasicGame {
 		angle += 1;
 		player.rotate(1);
 		ignitionSprite.rotate(1);
+		
 	}
 
 	public void throttling() {
