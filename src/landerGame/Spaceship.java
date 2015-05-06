@@ -239,13 +239,17 @@ public class Spaceship extends BasicGame {
 		ignitionSprite.rotate(1);
 
 	}
-
+	
 	public void throttling() {
 		// here the throttle value (with it's embedded angular value) is added
 		// to the acceleration
+		if(accelx < 1){
 		accelx += throttlex;
+		}
+		
+		if(accely <1){
 		accely += throttley;
-
+		}
 	}
 
 	public void stopShip() { // method for stopping ship
