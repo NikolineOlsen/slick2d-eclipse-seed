@@ -46,6 +46,8 @@ public class Spaceship extends BasicGame {
 								// when fuelTank = 0
 	public int platformFuel = 1000;
 	public boolean shipTooFast = false;
+	
+	public planet closestPlanet = null;
 
 	public Spaceship(String title) { // remember to call this in Landers Main
 		super(title);

@@ -21,6 +21,7 @@ public class CollisionDetection extends BasicGame {
 	
 	public static boolean collidesWithPlanet = false;
 	public static boolean collidesWithPlatform = false;
+	public static boolean GravitationalEffect = false;
 	
 	public static Circle GPull;
 	public CollisionDetection(String title) {
@@ -76,6 +77,10 @@ public class CollisionDetection extends BasicGame {
 		
 		collidesWithPlatform = shipCollider.intersects(platformCollider); 	
 		collidesWithPlanet = shipCollider.intersects(planetCollider); //checks if ship collision box collides with planet collision box
+		
+		GravitationalEffect = shipCollider.intersects(GPull);
+		
+		//System.out.println(GravitationalEffect);
 		
 		
 	}
