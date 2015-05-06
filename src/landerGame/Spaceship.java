@@ -29,11 +29,7 @@ public class Spaceship extends BasicGame {
 	float height; // height of player'
 	public float health = 100; // health of player
 
-	AffineTransform transformer = new AffineTransform(); // initializing the
-															// AffineTransform
-															// method, that will
-															// help rotate the
-															// spaceship
+	AffineTransform transformer = new AffineTransform(); // initializing the AffineTransform method, that will help rotate the spaceship
 
 	public double accelx = 0;
 	public double accely = 0;
@@ -47,7 +43,7 @@ public class Spaceship extends BasicGame {
 	public int fuelTankLow = 0;// new value that switches place with fuelTank
 								// when fuelTank = 0
 	public int platformFuel = 1000;
-	public boolean shipTooFast;
+	public boolean shipTooFast = false;
 
 	public Spaceship(String title) { // remember to call this in Landers Main
 		super(title);
@@ -128,10 +124,10 @@ public class Spaceship extends BasicGame {
 		if (CollisionDetection.collidesWithPlatform == true) {
 
 			shipCollision();
-			for (int i = 0; i <= platformFuel; i++) { // only gives as much fuel there is in the platform
-				if (angle > -100 && angle < -70) {
-					fuelTank++;
-				}
+			 // only gives as much fuel there is in the platform
+				if (angle > -100 && angle < -70 && 0 < platformFuel) { // spaceship will keep tanking fuel until the platforms fuel is empty
+					platformFuel -= 10;
+					fuelTank +=10;
 
 				if (platformFuel == 0) {
 
@@ -164,13 +160,17 @@ public class Spaceship extends BasicGame {
 											// fast, health is reduced
 			shipTooFast = true;
 			health -= 0.2f;
+		} else if ((accelx + accely) / 2 < -0.5) {
+			shipTooFast = false; // doesnt work atm for some reason, should not display damage when not going too fast
 		}
+		
 		if (angle < -100 || angle > -70) { // if angle is too wrong, ship takes more damage
 												
 			health -= 0.5f;
 			System.out.println("Angle is wrong");
-		} else System.out.println("Angle is right");
-
+		} else {
+			System.out.println("Angle is right");
+		}
 	}
 
 	public void movement() { // This function moves the ship in it's current
