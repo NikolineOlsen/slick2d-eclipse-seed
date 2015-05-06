@@ -22,6 +22,7 @@ public class CollisionDetection extends BasicGame {
 	public static boolean collidesWithPlanet = false;
 	public static boolean collidesWithPlatform = false;
 	
+	public static Circle GPull;
 	public CollisionDetection(String title) {
 		super(title);
 	}
@@ -37,6 +38,9 @@ public class CollisionDetection extends BasicGame {
 		
 		g.setColor(new Color(255,255,255,0.2f));
 		g.fill(platformCollider);
+		
+		g.setColor(new Color(255,0,255,0.2f));
+		g.fill(GPull);
 		
 		
 		
@@ -54,6 +58,8 @@ public class CollisionDetection extends BasicGame {
 		shipCollider = new Circle(0,0,Lander.player.player.getWidth()/2,20); //needs to get values from player png size this way
 		
 		platformCollider = new Rectangle(0,0, landerGame.Platform.platform.getWidth(), landerGame.Platform.platform.getHeight());
+	
+		GPull = new Circle (Lander.testplanet.position.x +(planet.planetimage.getWidth()/2),Lander.testplanet.position.y +(planet.planetimage.getWidth()/2),planet.planetimage.getWidth());
 	}	
 
 
