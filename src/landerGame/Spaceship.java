@@ -213,9 +213,14 @@ public class Spaceship extends BasicGame {
 
 	public void movement() { // This function moves the ship in it's current
 								// direction
+		if (CollisionDetection.GravitationalEffect == true){
 
 		x += accelx + Lander.testplanet.gx;
 		y += accely + Lander.testplanet.gy;
+		}else{
+			x += accelx;
+			y += accely;
+		}
 
 		accelx = accelx / 1.001;
 		accely = accely / 1.001;
