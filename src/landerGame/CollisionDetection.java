@@ -16,11 +16,13 @@ import org.newdawn.slick.geom.Transform;
 public class CollisionDetection extends BasicGame {
 
 	public static Shape shipCollider = null;
-	private Circle planetCollider = null;
-	public static boolean collides = false;
-	public static boolean collides2 = false;
-	private Rectangle platformCollider = null;
+	private static Circle planetCollider = null;
+	private static Rectangle platformCollider = null;
 	
+	public static boolean collidesWithPlanet = false;
+	public static boolean collidesWithPlatform = false;
+	
+	public static Circle GPull;
 	public CollisionDetection(String title) {
 		super(title);
 	}
@@ -37,20 +39,29 @@ public class CollisionDetection extends BasicGame {
 		g.setColor(new Color(255,255,255,0.2f));
 		g.fill(platformCollider);
 		
-		g.resetTransform();
-		g.drawString("Collides: "+collides, 10, 40); //for debugging collision
+
+		g.setColor(new Color(255,0,255,0.2f));
+		g.fill(GPull);
 		
+		
+		
+
+		g.resetTransform();
+		g.drawString("Collides with planet: "+collidesWithPlanet, 10, 40); //for debugging collision
+		g.drawString("Collides with platform: "+collidesWithPlatform, 10, 60);
 		
 		
 	}
 
 	@Override
 	public void init(GameContainer container) throws SlickException {
-		planetCollider = new Circle(0,0,Lander.testplanet.planetimage.getWidth()/2);
+		planetCollider = new Circle(0,0,planet.planetimage.getWidth()/2);
 		
 		shipCollider = new Circle(0,0,Lander.player.player.getWidth()/2,20); //needs to get values from player png size this way
 		
 		platformCollider = new Rectangle(0,0, landerGame.Platform.platform.getWidth(), landerGame.Platform.platform.getHeight());
+	
+		GPull = new Circle (Lander.testplanet.position.x +(planet.planetimage.getWidth()/2),Lander.testplanet.position.y +(planet.planetimage.getWidth()/2),planet.planetimage.getWidth());
 	}	
 
 
@@ -58,12 +69,13 @@ public class CollisionDetection extends BasicGame {
 	public void update(GameContainer container, int delta) throws SlickException {
 		
 		//shipCollider.setLocation(container.getInput().getMouseX(), container.getInput().getMouseY());//shipSquare follows mouse
-		shipCollider.setLocation(Lander.player.x+900,Lander.player.y+200); //divides by viewport size because player is placed in game center
+		shipCollider.setLocation(Lander.player.x + Lander.VIEWPORT_SIZE_X / 2, Lander.player.y
+				+ Lander.VIEWPORT_SIZE_Y / 2); //divides by viewport size because player is placed in game center
 		planetCollider.setLocation(Lander.testplanet.position.x, Lander.testplanet.position.y);
 		platformCollider.setLocation(Lander.platform.position.x,Lander.platform.position.y);
 		
-		collides2 = shipCollider.intersects(platformCollider); 	
-		collides = shipCollider.intersects(planetCollider); //checks if ship collision box collides with planet collision box
+		collidesWithPlatform = shipCollider.intersects(platformCollider); 	
+		collidesWithPlanet = shipCollider.intersects(planetCollider); //checks if ship collision box collides with planet collision box
 		
 		
 	}

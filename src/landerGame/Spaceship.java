@@ -1,6 +1,5 @@
 package landerGame;
 
-
 import java.awt.Shape;
 import java.awt.geom.AffineTransform;
 
@@ -17,25 +16,23 @@ import sun.awt.image.PixelConverter.Bgrx;
 //this is the class for moving the spaceship. BasicGame contains all the basics to create a simple game
 public class Spaceship extends BasicGame {
 
-
-	//this is the place where we create all the variables
-	//the game images:
+	// this is the place where we create all the variables
+	// the game images:
 	public Image player;
-	float x = 20.0f; //x-coordinates for spaceship
+	float x = 20.0f; // x-coordinates for spaceship
 	float y = 5.0f; // y-coordinates for spaceship
-	
+
 	Image ignitionSprite;
-	
-	float speed = 0.4f; //speed of spaceship
-	public float slowdown = 0.093f; //gradually slowing down the ship
-	float width; //width of player
-	float height; //height of player'
-	public float health = 100; //health of player
-	
-	
-	AffineTransform transformer = new AffineTransform(); //initializing the AffineTransform method, that will help rotate the spaceship
-	
-		
+
+
+	float speed = 0.2f; // speed of spaceship
+	float width; // width of player
+	float height; // height of player'
+	public float health = 100; // health of player
+
+	AffineTransform transformer = new AffineTransform(); // initializing the AffineTransform method, that will help rotate the spaceship
+
+
 	public double accelx = 0;
 	public double accely = 0;
 	public float angle = -90;
@@ -44,45 +41,40 @@ public class Spaceship extends BasicGame {
 	public double throttley;
 	public boolean ignition = false;
 
-	
-
-	public int fuelTank = 1000; //starting value of fuel tank of spaceship
-	public int fuelTankLow = 0;//new value that switches place with fuelTank when fuelTank  = 0
-	public int platformFuel;
-	public boolean shipTooFast;
-	
-
-	
+	public int fuelTank = 1000; // starting value of fuel tank of spaceship
+	public int fuelTankLow = 0;// new value that switches place with fuelTank
+								// when fuelTank = 0
+	public int platformFuel = 1000;
+	public boolean shipTooFast = false;
 
 	public Spaceship(String title) { // remember to call this in Landers Main
 		super(title);
 
 	}
 
+
 	@Override
-	public void render(GameContainer arg0, Graphics g) throws SlickException { //render is called constantly. This is where all graphics is done.
-		// TODO Auto-generated method stub
-		//after loading the spaceship image in "init", we draw it in "render"
-		g.drawImage(player, x+900, y+200); 
- 								
-		if (ignition == true) {
-			g.drawImage(ignitionSprite, x +900, y + 200);
-			ignitionSprite.setCenterOfRotation(player.getCenterOfRotationX(),player.getCenterOfRotationY()); //sets ignitionsprites center of rotation to the same as the spaceship as defined in init
+	public void render(GameContainer arg0, Graphics g) throws SlickException { 
+		// after loading the spaceship image in "init", we draw it in "render"
+		g.drawImage(player, x + Lander.VIEWPORT_SIZE_X / 2, y
+				+ Lander.VIEWPORT_SIZE_Y / 2); // it's called g, after "Graphics g", above. The spaceship is drawn at location(100,100)
+		if (ignition == true) { // draws the ignitionsprite if w is pressed
+			g.drawImage(ignitionSprite, x + Lander.VIEWPORT_SIZE_X / 2, y
+					+ Lander.VIEWPORT_SIZE_Y / 2);
+			ignitionSprite.setCenterOfRotation(player.getCenterOfRotationX(),
+					player.getCenterOfRotationY()); // sets ignitionsprites center of rotation to the same as the spaceship as defined in init
+
 		}
-		
+
 	}
 
-	
-	public void init(GameContainer arg0) throws SlickException { //init is called when the game starts. This is where we set things up for the game, like load resources like images and sound.
-		//loading the spaceship image:
+	public void init(GameContainer arg0) throws SlickException { // init is called when the game starts. This is where we set things up for the game, like load resources like images and sound.
+		// loading the spaceship image:
 		player = new Image("landerGame/Resources/minispace.png");
 
-		player.setCenterOfRotation((player.getWidth() /2), (player.getHeight() / 3)-10); // sets point of rotation on player, is a bit offset because the image is heigher than the spaceship sprite
-		ignitionSprite = new Image("landerGame/Resources/ignition.png");// loading ignition sprite 
-		
-		
-		
-		
+		player.setCenterOfRotation((player.getWidth() / 2),
+				(player.getHeight() / 3) - 10); // sets point of rotation on player, is a bit offset because the image is heigher than the spaceship sprite
+		ignitionSprite = new Image("landerGame/Resources/ignition.png");// loading ignition sprite
 
 	}
 
@@ -108,41 +100,46 @@ public class Spaceship extends BasicGame {
 		if (input.isKeyDown(Input.KEY_UP) || input.isKeyDown(Input.KEY_W)) {
 			throttling();
 			ignition = true;
-			System.out.println("Throttle is: " + ignition + " Fuel level: " + fuelTank--);
-
+			System.out.println("Throttle is: " + ignition + " Fuel level: "
+					+ fuelTank--);
 
 		} else {
 			ignition = false;
 			System.out.println("Throttle is: " + ignition);
 		}
 
+		// fuel code for spaceship:
+		if (fuelTank <= 0) { // if the fuel is equal or less than zero, the accelx and -y will be reduced by 1.05 for a smoother stop, when it's out of gas
 
-		//fuel code for spaceship:
-		if (fuelTank <= 0) { //if the fuel is equal or less than zero, the accelx and -y will
-			//be reduced by 1.05 for a smoother stop, when it's out of gas
+			accelx = accelx / 1.05;
+			accely = accely / 1.05;
+			stopShip();
 
-
-			speed += slowdown;
-			speed += slowdown;
-			
-			if (speed <= 1) {
-				accelx = 0;
-			}
-			stopShip(); 
 
 		}
 
+		if (CollisionDetection.collidesWithPlanet == true) { // if ship collides with planet it stops
+			// land ship
+			shipCollision(); // also checks if accel is too high and reduces health if it is. also checks angle
 
+		}
 
-		if (CollisionDetection.collides == true){ // if ship collides with planet, it stops
+		// if ships angle is off it loses life, it the angle is right it gets
+		// fuel, when landing on platform
+		if (CollisionDetection.collidesWithPlatform == true) {
 
-			//land ship
-			x += accelx - Lander.testplanet.gx;
-			y += accely - Lander.testplanet.gy; 
-			if((accelx+accely)/2 > -0.5){//if ship collides and goes too fast, health is reduced
-				shipTooFast = true;
-				health -= 0.2f;
+			shipCollision();
+			 // only gives as much fuel there is in the platform
+				if (angle > -100 && angle < -70 && 0 < platformFuel) { // spaceship will keep tanking fuel until the platforms fuel is empty
+					platformFuel -= 10;
+					fuelTank +=10;
+
+				if (platformFuel == 0) {
+
+					// exit the thing. no more fuel...
+				}
 			}
+
 
 
 		} 
@@ -157,48 +154,66 @@ public class Spaceship extends BasicGame {
 			
 		}*/
 		
-		if ( CollisionDetection.collides2 == true && angle <= -120) {
+		if ( CollisionDetection.collidesWithPlatform == true && angle <= -120) {
 			
 			health -= 1.0f;
 			
 		}
-		else if (CollisionDetection.collides2 == true && angle >= 120) {
+		else if (CollisionDetection.collidesWithPlatform == true && angle >= 120) {
 			
 			health -= 1.0f;
 		}
-		else if (CollisionDetection.collides2 == true && angle > -120 && angle < 120) {
+		else if (CollisionDetection.collidesWithPlatform == true && angle > -120 && angle < 120) {
 			
 			
 			fuelTank++;
 			
 			
 			
+
 		}
 
-
-		if(health <=0) { // if health is below 0, player sprites are removed(made invisible)
+		if (health <= 0) { // if health is below 0, player sprites are removed(made invisible)
 			player.setAlpha(0);
-
 			ignitionSprite.setAlpha(0);
-
-
-
-		} if (health <0){
+		}
+		if (health < 0) {
 			health = 0; // stops health counter going down when reaching 0
-		} 
-		System.out.println("Accel "+(accelx+accely)/2 );
-
-
+		}
+	
+	
+		System.out.println("Ship angle is: " + angle);
+		System.out.println("Accel " + (accelx + accely) / 2);
+		
+		
 	}
-	
-	
 
-		
+	private void shipCollision() {
 
-	public void movement() { // This function moves the ship in it's current direction	
+		x += accelx - Lander.testplanet.gx;
+		y += accely - Lander.testplanet.gy;
+		if ((accelx + accely) / 2 > -0.5) { // if ship collides and goes too
+											// fast, health is reduced
+			shipTooFast = true;
+			health -= 0.2f;
+		} else if ((accelx + accely) / 2 < -0.5) {
+			shipTooFast = false; // doesnt work atm for some reason, should not display damage when not going too fast
+		}
 		
+		if (angle < -100 || angle > -70) { // if angle is too wrong, ship takes more damage
+												
+			health -= 0.5f;
+			System.out.println("Angle is wrong");
+		} else {
+			System.out.println("Angle is right");
+		}
+	}
+
+	public void movement() { // This function moves the ship in it's current
+								// direction
+
 		x += accelx + Lander.testplanet.gx;
-		y += accely + Lander.testplanet.gy; 
+		y += accely + Lander.testplanet.gy;
 
 		accelx = accelx / 1.001;
 		accely = accely / 1.001;
@@ -208,8 +223,6 @@ public class Spaceship extends BasicGame {
 		angle -= 1;
 		player.rotate(-1);
 		ignitionSprite.rotate(-1);
-		
-		
 
 	}
 
@@ -217,7 +230,7 @@ public class Spaceship extends BasicGame {
 		angle += 1;
 		player.rotate(1);
 		ignitionSprite.rotate(1);
-		
+
 	}
 
 	public void throttling() {
@@ -225,19 +238,13 @@ public class Spaceship extends BasicGame {
 		// to the acceleration
 		accelx += throttlex;
 		accely += throttley;
-		
 
 	}
-	
-	public void stopShip(){ //method for stopping ship
-		accelx = accelx/1.05;
-		accely = accely/1.05;
-		
+
+	public void stopShip() { // method for stopping ship
+		accelx = accelx / 1.05;
+		accely = accely / 1.05;
+
 	}
-	
-
-
-
-	
 
 }
