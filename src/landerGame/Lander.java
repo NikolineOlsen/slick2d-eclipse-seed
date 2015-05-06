@@ -51,6 +51,10 @@ public class Lander extends BasicGame {
 		// constructor
 	}
 
+
+	
+	
+	
 	@Override
 	public void render(GameContainer arg0, Graphics arg1) throws SlickException {
 		// TODO is called constantly. This is where all your graphics is done.

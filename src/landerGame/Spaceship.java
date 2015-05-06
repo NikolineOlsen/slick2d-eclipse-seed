@@ -26,7 +26,8 @@ public class Spaceship extends BasicGame {
 	
 	Image ignitionSprite;
 	
-	float speed = 0.2f; //speed of spaceship
+	float speed = 0.4f; //speed of spaceship
+	public float slowdown = 0.093f; //gradually slowing down the ship
 	float width; //width of player
 	float height; //height of player'
 	public float health = 100; //health of player
@@ -62,10 +63,10 @@ public class Spaceship extends BasicGame {
 	public void render(GameContainer arg0, Graphics g) throws SlickException { //render is called constantly. This is where all graphics is done.
 		// TODO Auto-generated method stub
 		//after loading the spaceship image in "init", we draw it in "render"
-		g.drawImage(player, x+Lander.VIEWPORT_SIZE_X/2, y+Lander.VIEWPORT_SIZE_Y/2); //it's called g, after "Graphics g", above. The spaceship is drawn at location (100,100)
+		g.drawImage(player, x+900, y+200); 
  								
 		if (ignition == true) {
-			g.drawImage(ignitionSprite, x +Lander.VIEWPORT_SIZE_X/2, y + Lander.VIEWPORT_SIZE_Y/2);
+			g.drawImage(ignitionSprite, x +900, y + 200);
 			ignitionSprite.setCenterOfRotation(player.getCenterOfRotationX(),player.getCenterOfRotationY()); //sets ignitionsprites center of rotation to the same as the spaceship as defined in init
 		}
 		
@@ -121,8 +122,12 @@ public class Spaceship extends BasicGame {
 			//be reduced by 1.05 for a smoother stop, when it's out of gas
 
 
-			accelx = accelx/1.05;
-			accely = accely/1.05;
+			speed += slowdown;
+			speed += slowdown;
+			
+			if (speed <= 1) {
+				accelx = 0;
+			}
 			stopShip(); 
 
 		}
@@ -143,6 +148,15 @@ public class Spaceship extends BasicGame {
 		} 
 
 		//if ships angle is off it loses life, it the angle is right it gets fuel, when landing on platform
+		
+		/*if (CollisionDetection.collides == true){ // if ship collides with platform, it stops
+
+			//land ship
+			x += accelx - Lander.platform.gx;
+			y += accely - Lander.platform.gy;
+			
+		}*/
+		
 		if ( CollisionDetection.collides2 == true && angle <= -120) {
 			
 			health -= 1.0f;
@@ -152,15 +166,12 @@ public class Spaceship extends BasicGame {
 			
 			health -= 1.0f;
 		}
-		else if (CollisionDetection.collides2 == true) {
+		else if (CollisionDetection.collides2 == true && angle > -120 && angle < 120) {
 			
 			
-			fuelTank = platformFuel+fuelTank;
+			fuelTank++;
 			
-			if (platformFuel == 0) {
-				
-				//exit the thing. no more fuel...
-			}
+			
 			
 		}
 
