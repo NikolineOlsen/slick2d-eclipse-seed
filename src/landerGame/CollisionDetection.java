@@ -16,10 +16,11 @@ import org.newdawn.slick.geom.Transform;
 public class CollisionDetection extends BasicGame {
 
 	public static Shape shipCollider = null;
-	private Circle planetCollider = null;
-	public static boolean collides = false;
-	public static boolean collides2 = false;
-	private Rectangle platformCollider = null;
+	private static Circle planetCollider = null;
+	private static Rectangle platformCollider = null;
+	
+	public static boolean collidesWithPlanet = false;
+	public static boolean collidesWithPlatform = false;
 	
 	public CollisionDetection(String title) {
 		super(title);
@@ -40,15 +41,15 @@ public class CollisionDetection extends BasicGame {
 		
 		
 		g.resetTransform();
-		g.drawString("Collides: "+collides, 10, 40); //for debugging collision
-		
+		g.drawString("Collides with planet: "+collidesWithPlanet, 10, 40); //for debugging collision
+		g.drawString("Collides with platform: "+collidesWithPlatform, 10, 60);
 		
 		
 	}
 
 	@Override
 	public void init(GameContainer container) throws SlickException {
-		planetCollider = new Circle(0,0,Lander.testplanet.planetimage.getWidth()/2);
+		planetCollider = new Circle(0,0,planet.planetimage.getWidth()/2);
 		
 		shipCollider = new Circle(0,0,Lander.player.player.getWidth()/2,20); //needs to get values from player png size this way
 		
@@ -64,8 +65,8 @@ public class CollisionDetection extends BasicGame {
 		planetCollider.setLocation(Lander.testplanet.position.x, Lander.testplanet.position.y);
 		platformCollider.setLocation(Lander.platform.position.x,Lander.platform.position.y);
 		
-		collides2 = shipCollider.intersects(platformCollider); 	
-		collides = shipCollider.intersects(planetCollider); //checks if ship collision box collides with planet collision box
+		collidesWithPlatform = shipCollider.intersects(platformCollider); 	
+		collidesWithPlanet = shipCollider.intersects(planetCollider); //checks if ship collision box collides with planet collision box
 		
 		
 	}

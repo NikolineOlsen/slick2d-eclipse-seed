@@ -39,7 +39,7 @@ public class GUI {
 		if(Lander.player.ignition == true){
 			welcomeGUIAlpha --; // makes intro text fade out when throtthling
 		}
-		
+
 		
 		//healthbar code below
 		arg1.resetTransform(); //makes the following code follow the display window
@@ -55,7 +55,7 @@ public class GUI {
 		arg1.drawString("Fuel " + Lander.player.fuelTankLow, 250, 15);
 		}
 		//if statements for damage, destruction and reset:
-		if(CollisionDetection.collides == true && Lander.player.shipTooFast == true){
+		if(CollisionDetection.collidesWithPlanet == true && Lander.player.shipTooFast == true || CollisionDetection.collidesWithPlatform == true){
 			arg1.setColor(Color.red);
 			arg1.drawString("Your spaceship is taking damage", 50, 50);
 		}
