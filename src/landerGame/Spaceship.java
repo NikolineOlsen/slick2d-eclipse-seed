@@ -131,7 +131,7 @@ public class Spaceship extends BasicGame {
 			for (int i = 0; i <= platformFuel; i++) { // only gives as much fuel there is in the platform
 				if (angle > -100 && angle < -70) {
 					fuelTank++;
-				//}
+				}
 
 				if (platformFuel == 0) {
 
@@ -148,7 +148,8 @@ public class Spaceship extends BasicGame {
 		if (health < 0) {
 			health = 0; // stops health counter going down when reaching 0
 		}
-		}
+	
+	
 		System.out.println("Ship angle is: " + angle);
 		System.out.println("Accel " + (accelx + accely) / 2);
 		
