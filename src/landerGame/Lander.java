@@ -90,12 +90,13 @@ public class Lander extends BasicGame {
 		testplanet2.render(arg0, arg1);
 		testplanet3.render(arg0, arg1);
 		
-		asteroid.render(arg0, arg1);
-		
 		platform.render(arg0, arg1);
 		platform2.render(arg0, arg1);
 		platform3.render(arg0, arg1);
 
+		asteroid.render(arg0, arg1);
+		
+		
 		arg1.translate(player.x / parallaxConstant, player.y / parallaxConstant);
 		player.render(arg0, arg1); // calls render method in Spaceship class
 		collision.render(arg0, arg1);
@@ -139,20 +140,20 @@ public class Lander extends BasicGame {
 		planets[7] = new planet(1, -150f, -100f);
 		planets[8] = new planet(1, -150f, -100f);
 		planets[9] = new planet(1, -150f, -100f);*/
-		testplanet = new planet(1, -150, -100);
-		testplanet2 = new planet(1, 600, -900);
-		testplanet3 = new planet(1, 200, -1700);
+		testplanet = new planet(1, -150, 900);
+		testplanet2 = new planet(1, 600, 400);
+		testplanet3 = new planet(1, -150, -450);
 		
-		
+		platform = new Platform(1, 75, 870);
+		platform2 = new Platform(1, 800, 370);
+		platform3 = new Platform(1, 75, -480);
 		
 		asteroid.init(arg0);
 		gui.init(arg0);
 		stardust = new Image("landerGame/resources/stardust.png");
 		asteroidbelt = new Image("landerGame/resources/asteroidbelt1.png");
 		
-		platform = new Platform(1, 75, -130);
-		platform2 = new Platform(1, 300, -160);
-		platform3 = new Platform(1, 100, -1730);
+		
 		
 		collision.init(arg0);
 		
