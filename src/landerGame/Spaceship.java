@@ -133,9 +133,8 @@ public class Spaceship extends BasicGame {
 			shipCollision();
 			 // only gives as much fuel there is in the platform
 				if (angle > -100 && angle < -70 && 0 < platformFuel) { // spaceship will keep tanking fuel until the platforms fuel is empty
-					platformFuel -= 10;
-					fuelTank +=10;
-
+					platformFuel -= 50;
+					fuelTank +=50;
 				if (platformFuel == 0) {
 
 					// exit the thing. no more fuel...
@@ -146,6 +145,7 @@ public class Spaceship extends BasicGame {
 
 		} 
 
+		//below is old fuel code
 		//if ships angle is off it loses life, it the angle is right it gets fuel, when landing on platform
 		
 		/*if (CollisionDetection.collides == true){ // if ship collides with platform, it stops
@@ -154,7 +154,7 @@ public class Spaceship extends BasicGame {
 			x += accelx - Lander.platform.gx;
 			y += accely - Lander.platform.gy;
 			
-		}*/
+		}
 		
 		if ( CollisionDetection.collidesWithPlatform == true && angle <= -120) {
 			
@@ -170,11 +170,8 @@ public class Spaceship extends BasicGame {
 			
 			fuelTank++;
 			
-			
-			
-
 		}
-
+*/
 		if (health <= 0) { // if health is below 0, player sprites are removed(made invisible)
 			player.setAlpha(0);
 			ignitionSprite.setAlpha(0);
@@ -192,8 +189,11 @@ public class Spaceship extends BasicGame {
 
 	private void shipCollision() {
 
-		x += accelx - Lander.testplanet.gx;
+		x += accelx - Lander.testplanet.gx; // this stops the ship by canceling out the movement values with their negative values
 		y += accely - Lander.testplanet.gy;
+	
+		
+		
 		if ((accelx + accely) / 2 > -0.5) { // if ship collides and goes too
 											// fast, health is reduced
 			shipTooFast = true;
