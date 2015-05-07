@@ -193,7 +193,7 @@ public class Spaceship extends BasicGame {
 		x += accelx - Lander.testplanet.gx; // this stops the ship by canceling out the movement values with their negative values
 		y += accely - Lander.testplanet.gy;
 	
-		
+		stopShip();
 		
 		if ((accelx + accely) / 2 > -0.5) { // if ship collides and goes too
 											// fast, health is reduced
