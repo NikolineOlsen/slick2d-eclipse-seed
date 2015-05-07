@@ -98,10 +98,12 @@ public class Spaceship extends BasicGame {
 
 		// if the up arrow is being pressed:
 		if (input.isKeyDown(Input.KEY_UP) || input.isKeyDown(Input.KEY_W)) {
+			if (fuelTank > 0) {
 			throttling();
 			ignition = true;
 			System.out.println("Throttle is: " + ignition + " Fuel level: "
 					+ fuelTank--);
+			}
 
 		} else {
 			ignition = false;
@@ -109,14 +111,14 @@ public class Spaceship extends BasicGame {
 		}
 
 		// fuel code for spaceship:
-		if (fuelTank <= 0) { // if the fuel is equal or less than zero, the accelx and -y will be reduced by 1.05 for a smoother stop, when it's out of gas
+		//if (fuelTank <= 0) { // if the fuel is equal or less than zero, the accelx and -y will be reduced by 1.05 for a smoother stop, when it's out of gas
 
-			accelx = accelx / 1.05;
-			accely = accely / 1.05;
-			stopShip();
+			//accelx = accelx / 1.05;
+			//accely = accely / 1.05;
+			
 
 
-		}
+		//}
 
 		if (CollisionDetection.collidesWithPlanet == true) { // if ship collides with planet it stops
 			// land ship

@@ -68,7 +68,7 @@ public class CollisionDetection extends BasicGame {
 	@Override
 	public void update(GameContainer container, int delta) throws SlickException {
 		
-		//shipCollider.setLocation(container.getInput().getMouseX(), container.getInput().getMouseY());//shipSquare follows mouse
+		///shipCollider.setLocation(container.getInput().getMouseX(), container.getInput().getMouseY());//shipSquare follows mouse
 		shipCollider.setLocation(Lander.player.x + Lander.VIEWPORT_SIZE_X / 2, Lander.player.y
 				+ Lander.VIEWPORT_SIZE_Y / 2); //divides by viewport size because player is placed in game center
 		planetCollider.setLocation(Lander.testplanet.position.x, Lander.testplanet.position.y);

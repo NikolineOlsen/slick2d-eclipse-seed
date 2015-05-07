@@ -27,6 +27,7 @@ public class Lander extends BasicGame {
 	MapBounds bounds = new MapBounds();
 	GUI gui = new GUI();
 	public static planet testplanet;
+	//planet[] planets = new planet[10];
 	Asteroids asteroid = new Asteroids("asteroid");
 	public static Platform platform;
 
@@ -74,6 +75,13 @@ public class Lander extends BasicGame {
 				+ stardust.getWidth());
 
 		arg1.translate(-player.x / 2, -player.y / 2);
+		
+		
+		
+		
+		
+		
+		
 		testplanet.render(arg0, arg1);
 		
 		asteroid.render(arg0, arg1);
@@ -96,7 +104,11 @@ public class Lander extends BasicGame {
 		gui.render(arg0, arg1); // calls render method in GUI
 		
 		
+		/*for (int i = 0; i <= 9; i++ ) {
 
+			planets[i].render(arg0, arg1);
+		}
+*/
 
 	}
 
@@ -107,7 +119,24 @@ public class Lander extends BasicGame {
 		// sounds.
 		bg = new Image("landerGame/resources/spaceBg3.jpg");
 		player.init(arg0); // calls init method in Spaceship
+		
+		//array of planets initialized, with scale and positions 
+		/*planets[0] = new planet(1, -100f, 200f);
+		planets[1] = new planet(1, -150f, 500f);
+		planets[2] = new planet(1, -150f, 1000f);
+		planets[3] = new planet(1, -150f, 1300f);
+		planets[4] = new planet(1, -150f, -100f);
+		planets[5] = new planet(1, -150f, -100f);
+		planets[6] = new planet(1, -150f, -100f);
+		planets[7] = new planet(1, -150f, -100f);
+		planets[8] = new planet(1, -150f, -100f);
+		planets[9] = new planet(1, -150f, -100f);*/
 		testplanet = new planet(1, -150, -100);
+		testplanet = new planet(1, -500, 300);
+		testplanet = new planet(1, -150, 600);
+		
+		
+		
 		asteroid.init(arg0);
 		gui.init(arg0);
 		stardust = new Image("landerGame/resources/stardust.png");
@@ -126,12 +155,17 @@ public class Lander extends BasicGame {
 		asteroid.update(arg0, delta);
 		bounds.update(arg0, delta);
 		collision.update(arg0, delta);
-		testplanet.update(arg0,delta);
+		//testplanet.update(arg0,delta);
 		platform.update(arg0, delta);
 
 		
 		gui.update(arg0, delta);
 		
+		//for every planet in the array there should be drawn a planet at these positions
+				
+		
+
+			
 		
 
 	}
