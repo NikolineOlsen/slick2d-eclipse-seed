@@ -85,8 +85,7 @@ public class CollisionDetection extends BasicGame {
 		
 	
 		GPull = new Circle (Lander.testplanet.position.x +(planet.planetimage.getWidth()/2),Lander.testplanet.position.y +(planet.planetimage.getWidth()/2),planet.planetimage.getWidth());
-		GPull = new Circle (Lander.testplanet2.position.x +(planet.planetimage.getWidth()/2),Lander.testplanet2.position.y +(planet.planetimage.getWidth()/2),planet.planetimage.getWidth());
-		GPull = new Circle (Lander.testplanet3.position.x +(planet.planetimage.getWidth()/2),Lander.testplanet3.position.y +(planet.planetimage.getWidth()/2),planet.planetimage.getWidth());
+		
 	}	
 
 
