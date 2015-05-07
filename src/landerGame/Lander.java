@@ -27,9 +27,13 @@ public class Lander extends BasicGame {
 	MapBounds bounds = new MapBounds();
 	GUI gui = new GUI();
 	public static planet testplanet;
+	public static planet testplanet2;
+	public static planet testplanet3;
 	//planet[] planets = new planet[10];
 	Asteroids asteroid = new Asteroids("asteroid");
 	public static Platform platform;
+	public static Platform platform2;
+	public static Platform platform3;
 
 	Collision Shape;
 
@@ -83,10 +87,14 @@ public class Lander extends BasicGame {
 		
 		
 		testplanet.render(arg0, arg1);
+		testplanet2.render(arg0, arg1);
+		testplanet3.render(arg0, arg1);
 		
 		asteroid.render(arg0, arg1);
 		
 		platform.render(arg0, arg1);
+		platform2.render(arg0, arg1);
+		platform3.render(arg0, arg1);
 
 		arg1.translate(player.x / parallaxConstant, player.y / parallaxConstant);
 		player.render(arg0, arg1); // calls render method in Spaceship class
@@ -132,8 +140,8 @@ public class Lander extends BasicGame {
 		planets[8] = new planet(1, -150f, -100f);
 		planets[9] = new planet(1, -150f, -100f);*/
 		testplanet = new planet(1, -150, -100);
-		testplanet = new planet(1, -500, 300);
-		testplanet = new planet(1, -150, 600);
+		testplanet2 = new planet(1, 600, -900);
+		testplanet3 = new planet(1, 200, -1700);
 		
 		
 		
@@ -141,7 +149,10 @@ public class Lander extends BasicGame {
 		gui.init(arg0);
 		stardust = new Image("landerGame/resources/stardust.png");
 		asteroidbelt = new Image("landerGame/resources/asteroidbelt1.png");
+		
 		platform = new Platform(1, 75, -130);
+		platform2 = new Platform(1, 300, -160);
+		platform3 = new Platform(1, 100, -1730);
 		
 		collision.init(arg0);
 		
@@ -155,7 +166,7 @@ public class Lander extends BasicGame {
 		asteroid.update(arg0, delta);
 		bounds.update(arg0, delta);
 		collision.update(arg0, delta);
-		//testplanet.update(arg0,delta);
+		testplanet.update(arg0,delta);
 		platform.update(arg0, delta);
 
 		
