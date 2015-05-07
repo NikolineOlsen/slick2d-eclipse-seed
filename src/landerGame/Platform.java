@@ -36,12 +36,7 @@ public class Platform {
 		// TODO is called when the game starts. You can put code here to set
 		// things up for your game, such as loading resources like images and
 		// sounds.
-			
 		
-
-		
-		
-	
 	} 	
 	
 	public void update(GameContainer arg0, int delta) {

@@ -93,6 +93,7 @@ public class GUI {
 			Lander.player.health = 100;
 			Lander.player.player.setAlpha(255);
 			Lander.player.ignitionSprite.setAlpha(255);
+			Lander.player.score = 0;
 			welcomeGUIAlpha = 200;
 			lossGUIAlpha  = 0;
 			gameloss = false;

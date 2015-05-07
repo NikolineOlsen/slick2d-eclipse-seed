@@ -34,11 +34,7 @@ public class Lander extends BasicGame {
 	public static Platform platform;
 	public static Platform platform2;
 	public static Platform platform3;
-<<<<<<< HEAD
 
-=======
-
->>>>>>> 0775ece9b09007a76bedc415060e9201d86c7e1d
 	Collision Shape;
 
 	public static CollisionDetection collision = new CollisionDetection("CollisionDetector");
@@ -54,10 +50,6 @@ public class Lander extends BasicGame {
 	
 
 	float parallaxConstant = 30;
-<<<<<<< HEAD
-	
-=======
->>>>>>> 0775ece9b09007a76bedc415060e9201d86c7e1d
 
 	public Lander(String title) {
 		super(title);
@@ -122,16 +114,9 @@ public class Lander extends BasicGame {
 		
 		
 		/*for (int i = 0; i <= 9; i++ ) {
-<<<<<<< HEAD
-
 			planets[i].render(arg0, arg1);
 		}
 */
-=======
-			planets[i].render(arg0, arg1);
-		}
-*/
->>>>>>> 0775ece9b09007a76bedc415060e9201d86c7e1d
 
 	}
 
@@ -168,11 +153,7 @@ public class Lander extends BasicGame {
 		asteroidbelt = new Image("landerGame/resources/asteroidbelt1.png");
 		
 		
-<<<<<<< HEAD
 		
-=======
-		
->>>>>>> 0775ece9b09007a76bedc415060e9201d86c7e1d
 		collision.init(arg0);
 		
 	
@@ -184,21 +165,12 @@ public class Lander extends BasicGame {
 		player.update(arg0, delta); // calls Spaceship class update method,
 		asteroid.update(arg0, delta);
 		bounds.update(arg0, delta);
-<<<<<<< HEAD
 		collision.update(arg0, delta);
 		testplanet.update(arg0,delta);
 		testplanet2.update(arg0,delta);
 		testplanet3.update(arg0,delta);
 		platform.update(arg0, delta);
 
-=======
-		collision.update(arg0, delta);
-		testplanet.update(arg0,delta);
-		testplanet2.update(arg0,delta);
-		testplanet3.update(arg0,delta);
-		platform.update(arg0, delta);
-
->>>>>>> 0775ece9b09007a76bedc415060e9201d86c7e1d
 		
 		gui.update(arg0, delta);
 		
@@ -207,13 +179,8 @@ public class Lander extends BasicGame {
 		
 
 			
-<<<<<<< HEAD
 		
 
-=======
-		
-
->>>>>>> 0775ece9b09007a76bedc415060e9201d86c7e1d
 	}
 
 	public static void main(String[] args) {
