@@ -114,23 +114,14 @@ public class Spaceship extends BasicGame {
 		}
 
 		// fuel code for spaceship:
-		//if (fuelTank <= 0) { // if the fuel is equal or less than zero, the accelx and -y will be reduced by 1.05 for a smoother stop, when it's out of gas
-<<<<<<< HEAD
-
-			//accelx = accelx / 1.05;
-			//accely = accely / 1.05;
-			
+		if (fuelTank <= 0) { // if the fuel is equal or less than zero, the accelx and -y will be reduced by 1.05 for a smoother stop, when it's out of gas
 
 
-=======
-
-			//accelx = accelx / 1.05;
-			//accely = accely / 1.05;
-			
+			stopShip();
+			GUI.gameloss = true;
+		}
 
 
->>>>>>> 0775ece9b09007a76bedc415060e9201d86c7e1d
-		//}
 
 		if (CollisionDetection.collidesWithPlanet == true) { // if ship collides with planet it stops
 			// land ship
@@ -157,10 +148,9 @@ public class Spaceship extends BasicGame {
 			if (angle > -100 && angle < -70 && 0 < platformFuel) { // spaceship will keep tanking fuel until the platforms fuel is empty
 				platformFuel -= 50;
 				fuelTank +=50;
-<<<<<<< HEAD
+
 				score +=50;
-=======
->>>>>>> 0775ece9b09007a76bedc415060e9201d86c7e1d
+
 				if (platformFuel == 0) {
 
 					// exit the thing. no more fuel...
@@ -168,7 +158,7 @@ public class Spaceship extends BasicGame {
 			}
 		}
 		if (CollisionDetection.collidesWithPlatform2 == true) {
-<<<<<<< HEAD
+
 
 			shipCollision();
 			// only gives as much fuel there is in the platform
@@ -197,7 +187,6 @@ public class Spaceship extends BasicGame {
 					}
 						
 
-=======
 
 			shipCollision();
 			// only gives as much fuel there is in the platform
@@ -224,37 +213,11 @@ public class Spaceship extends BasicGame {
 					}
 						
 
->>>>>>> 0775ece9b09007a76bedc415060e9201d86c7e1d
 
 		}
 				
 
-		//below is old fuel code
-		//if ships angle is off it loses life, it the angle is right it gets fuel, when landing on platform
 		
-		/*if (CollisionDetection.collides == true){ // if ship collides with platform, it stops
-			//land ship
-			x += accelx - Lander.platform.gx;
-			y += accely - Lander.platform.gy;
-			
-		}
-		
-		if ( CollisionDetection.collidesWithPlatform == true && angle <= -120) {
-			
-			health -= 1.0f;
-			
-		}
-		else if (CollisionDetection.collidesWithPlatform == true && angle >= 120) {
-			
-			health -= 1.0f;
-		}
-		else if (CollisionDetection.collidesWithPlatform == true && angle > -120 && angle < 120) {
-			
-			
-			fuelTank++;
-			
-		}
-*/
 		if (health <= 0) { // if health is below 0, player sprites are removed(made invisible)
 			player.setAlpha(0);
 			ignitionSprite.setAlpha(0);

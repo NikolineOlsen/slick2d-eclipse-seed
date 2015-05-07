@@ -12,7 +12,7 @@ import org.newdawn.slick.state.GameState;
 public class GUI {
 	
 	Image heart;
-	private boolean gameloss;
+	public static boolean gameloss;
 	private int welcomeGUIAlpha = 200;
 	private int lossGUIAlpha = 200;
 	
@@ -70,7 +70,7 @@ public class GUI {
 			arg1.setColor(new Color(80, 60, 60,lossGUIAlpha));
 			arg1.fillRect(20,20,Lander.VIEWPORT_SIZE_X-40,Lander.VIEWPORT_SIZE_Y-40);
 			arg1.setColor(new Color(255, 225, 255,lossGUIAlpha));
-			arg1.drawString("Your spaceship has been destroyed", Lander.VIEWPORT_SIZE_X/3, Lander.VIEWPORT_SIZE_Y/2);
+			arg1.drawString("Your spaceship has been destroyed or run out of fuel", Lander.VIEWPORT_SIZE_X/3, Lander.VIEWPORT_SIZE_Y/2);
 			arg1.drawString("Exit game with E", Lander.VIEWPORT_SIZE_X / 2,
 					Lander.VIEWPORT_SIZE_Y / 2+ 40);
 			arg1.drawString("Restart game with R", Lander.VIEWPORT_SIZE_X / 2,

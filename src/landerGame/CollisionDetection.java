@@ -78,19 +78,11 @@ public class CollisionDetection extends BasicGame {
 		
 		
 		shipCollider = new Circle(0,0,Lander.player.player.getWidth()/2,20); //needs to get values from player png size this way
-<<<<<<< HEAD
 		
 		platformCollider = new Rectangle(0,0, landerGame.Platform.platform.getWidth(), landerGame.Platform.platform.getHeight());
 		platform2Collider = new Rectangle(0,0, landerGame.Platform.platform.getWidth(), landerGame.Platform.platform.getHeight());
 		platform3Collider = new Rectangle(0,0, landerGame.Platform.platform.getWidth(), landerGame.Platform.platform.getHeight());
 		
-=======
-		
-		platformCollider = new Rectangle(0,0, landerGame.Platform.platform.getWidth(), landerGame.Platform.platform.getHeight());
-		platform2Collider = new Rectangle(0,0, landerGame.Platform.platform.getWidth(), landerGame.Platform.platform.getHeight());
-		platform3Collider = new Rectangle(0,0, landerGame.Platform.platform.getWidth(), landerGame.Platform.platform.getHeight());
-		
->>>>>>> 0775ece9b09007a76bedc415060e9201d86c7e1d
 	
 		GPull = new Circle (Lander.testplanet.position.x +(planet.planetimage.getWidth()/2),Lander.testplanet.position.y +(planet.planetimage.getWidth()/2),planet.planetimage.getWidth());
 		GPull = new Circle (Lander.testplanet2.position.x +(planet.planetimage.getWidth()/2),Lander.testplanet2.position.y +(planet.planetimage.getWidth()/2),planet.planetimage.getWidth());

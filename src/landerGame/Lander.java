@@ -25,7 +25,7 @@ public class Lander extends BasicGame {
 	
 							
 	MapBounds bounds = new MapBounds();
-	GUI gui = new GUI();
+	public static GUI gui = new GUI();
 	public static planet testplanet;
 	public static planet testplanet2;
 	public static planet testplanet3;
@@ -34,11 +34,7 @@ public class Lander extends BasicGame {
 	public static Platform platform;
 	public static Platform platform2;
 	public static Platform platform3;
-<<<<<<< HEAD
 
-=======
-
->>>>>>> 0775ece9b09007a76bedc415060e9201d86c7e1d
 	Collision Shape;
 
 	public static CollisionDetection collision = new CollisionDetection("CollisionDetector");
@@ -51,13 +47,7 @@ public class Lander extends BasicGame {
 	float bgPosX = player.x - VIEWPORT_SIZE_X / 3;
 	float bgPosY = player.y - VIEWPORT_SIZE_Y / 3;
 	
-	
 
-	float parallaxConstant = 30;
-<<<<<<< HEAD
-	
-=======
->>>>>>> 0775ece9b09007a76bedc415060e9201d86c7e1d
 
 	public Lander(String title) {
 		super(title);
@@ -73,8 +63,7 @@ public class Lander extends BasicGame {
 		// TODO is called constantly. This is where all your graphics is done.
 
 		// translate functions below are used to create "parallax" effect.
-		arg1.translate(-player.x / parallaxConstant, -player.y
-				/ parallaxConstant);
+		arg1.translate(-player.x / 30, -player.y / 30);
 		arg1.drawImage(bg, bgPosX, bgPosY); // draws background somewhat
 											// centralized
 
@@ -105,7 +94,7 @@ public class Lander extends BasicGame {
 		asteroid.render(arg0, arg1);
 		
 		
-		arg1.translate(player.x / parallaxConstant, player.y / parallaxConstant);
+		arg1.translate(player.x / 30, player.y / 30);
 		player.render(arg0, arg1); // calls render method in Spaceship class
 		collision.render(arg0, arg1);
 		
@@ -127,11 +116,7 @@ public class Lander extends BasicGame {
 			planets[i].render(arg0, arg1);
 		}
 */
-=======
-			planets[i].render(arg0, arg1);
-		}
-*/
->>>>>>> 0775ece9b09007a76bedc415060e9201d86c7e1d
+
 
 	}
 
@@ -166,13 +151,7 @@ public class Lander extends BasicGame {
 		gui.init(arg0);
 		stardust = new Image("landerGame/resources/stardust.png");
 		asteroidbelt = new Image("landerGame/resources/asteroidbelt1.png");
-		
-		
-<<<<<<< HEAD
-		
-=======
-		
->>>>>>> 0775ece9b09007a76bedc415060e9201d86c7e1d
+
 		collision.init(arg0);
 		
 	
@@ -184,21 +163,14 @@ public class Lander extends BasicGame {
 		player.update(arg0, delta); // calls Spaceship class update method,
 		asteroid.update(arg0, delta);
 		bounds.update(arg0, delta);
-<<<<<<< HEAD
+
+
 		collision.update(arg0, delta);
 		testplanet.update(arg0,delta);
 		testplanet2.update(arg0,delta);
 		testplanet3.update(arg0,delta);
 		platform.update(arg0, delta);
 
-=======
-		collision.update(arg0, delta);
-		testplanet.update(arg0,delta);
-		testplanet2.update(arg0,delta);
-		testplanet3.update(arg0,delta);
-		platform.update(arg0, delta);
-
->>>>>>> 0775ece9b09007a76bedc415060e9201d86c7e1d
 		
 		gui.update(arg0, delta);
 		
@@ -207,13 +179,6 @@ public class Lander extends BasicGame {
 		
 
 			
-<<<<<<< HEAD
-		
-
-=======
-		
-
->>>>>>> 0775ece9b09007a76bedc415060e9201d86c7e1d
 	}
 
 	public static void main(String[] args) {
