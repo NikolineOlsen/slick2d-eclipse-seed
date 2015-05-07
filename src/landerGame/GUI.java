@@ -71,6 +71,7 @@ public class GUI {
 					Lander.VIEWPORT_SIZE_Y / 2+ 40);
 			arg1.drawString("Restart game with R", Lander.VIEWPORT_SIZE_X / 2,
 					Lander.VIEWPORT_SIZE_Y / 2+ 60);
+			lossGUIAlpha  = 200;
 			
 		}
 	}
@@ -90,6 +91,7 @@ public class GUI {
 			Lander.player.ignitionSprite.setAlpha(255);
 			welcomeGUIAlpha = 200;
 			lossGUIAlpha  = 0;
+			gameloss = false;
 			
 		}
 
