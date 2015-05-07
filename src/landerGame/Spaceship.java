@@ -100,10 +100,12 @@ public class Spaceship extends BasicGame {
 
 		// if the up arrow is being pressed:
 		if (input.isKeyDown(Input.KEY_UP) || input.isKeyDown(Input.KEY_W)) {
+			if (fuelTank > 0) {
 			throttling();
 			ignition = true;
 			System.out.println("Throttle is: " + ignition + " Fuel level: "
 					+ fuelTank--);
+			}
 
 		} else {
 			ignition = false;
@@ -111,17 +113,26 @@ public class Spaceship extends BasicGame {
 		}
 
 		// fuel code for spaceship:
-		if (fuelTank <= 0) { // if the fuel is equal or less than zero, the accelx and -y will be reduced by 1.05 for a smoother stop, when it's out of gas
+		//if (fuelTank <= 0) { // if the fuel is equal or less than zero, the accelx and -y will be reduced by 1.05 for a smoother stop, when it's out of gas
 
-			accelx = accelx / 1.05;
-			accely = accely / 1.05;
-			stopShip();
-			Lander.gui.gameloss = true;
+			//accelx = accelx / 1.05;
+			//accely = accely / 1.05;
+			
 
 
-		}
+		//}
 
 		if (CollisionDetection.collidesWithPlanet == true) { // if ship collides with planet it stops
+			// land ship
+			shipCollision(); // also checks if accel is too high and reduces health if it is. also checks angle
+
+		}
+		if (CollisionDetection.collidesWithPlanet2 == true) { // if ship collides with planet it stops
+			// land ship
+			shipCollision(); // also checks if accel is too high and reduces health if it is. also checks angle
+
+		}
+		if (CollisionDetection.collidesWithPlanet3 == true) { // if ship collides with planet it stops
 			// land ship
 			shipCollision(); // also checks if accel is too high and reduces health if it is. also checks angle
 
@@ -132,16 +143,42 @@ public class Spaceship extends BasicGame {
 		if (CollisionDetection.collidesWithPlatform == true) {
 
 			shipCollision();
-			 // only gives as much fuel there is in the platform
-				if (angle > -100 && angle < -70 && 0 < platformFuel) { // spaceship will keep tanking fuel until the platforms fuel is empty
-					platformFuel -= 50;
-					fuelTank +=50;
+			// only gives as much fuel there is in the platform
+			if (angle > -100 && angle < -70 && 0 < platformFuel) { // spaceship will keep tanking fuel until the platforms fuel is empty
+				platformFuel -= 50;
+				fuelTank +=50;
 				if (platformFuel == 0) {
 
 					// exit the thing. no more fuel...
 				}
 			}
+		}
+		if (CollisionDetection.collidesWithPlatform2 == true) {
 
+			shipCollision();
+			// only gives as much fuel there is in the platform
+			if (angle > -100 && angle < -70 && 0 < platformFuel) { // spaceship will keep tanking fuel until the platforms fuel is empty
+				platformFuel -= 50;
+				fuelTank +=50;
+				if (platformFuel == 0) {
+
+					// exit the thing. no more fuel...
+				}
+			}
+		}
+				if (CollisionDetection.collidesWithPlatform3 == true) {
+
+					shipCollision();
+					// only gives as much fuel there is in the platform
+					if (angle > -100 && angle < -70 && 0 < platformFuel) { // spaceship will keep tanking fuel until the platforms fuel is empty
+						platformFuel -= 50;
+						fuelTank +=50;
+						if (platformFuel == 0) {
+
+							// exit the thing. no more fuel...
+						}
+					}
+						
 
 
 		} 
@@ -150,7 +187,6 @@ public class Spaceship extends BasicGame {
 		//if ships angle is off it loses life, it the angle is right it gets fuel, when landing on platform
 		
 		/*if (CollisionDetection.collides == true){ // if ship collides with platform, it stops
-
 			//land ship
 			x += accelx - Lander.platform.gx;
 			y += accely - Lander.platform.gy;
@@ -185,7 +221,7 @@ public class Spaceship extends BasicGame {
 		System.out.println("Ship angle is: " + angle);
 		System.out.println("Accel " + (accelx + accely) / 2);
 		
-		
+						
 	}
 
 	private void shipCollision() {
@@ -193,7 +229,7 @@ public class Spaceship extends BasicGame {
 		x += accelx - Lander.testplanet.gx; // this stops the ship by canceling out the movement values with their negative values
 		y += accely - Lander.testplanet.gy;
 	
-		
+		stopShip();
 		
 		if ((accelx + accely) / 2 > -0.5) { // if ship collides and goes too
 											// fast, health is reduced

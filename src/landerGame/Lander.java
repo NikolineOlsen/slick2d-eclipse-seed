@@ -25,10 +25,15 @@ public class Lander extends BasicGame {
 	
 							
 	MapBounds bounds = new MapBounds();
-	public static GUI gui = new GUI();
+	GUI gui = new GUI();
 	public static planet testplanet;
+	public static planet testplanet2;
+	public static planet testplanet3;
+	//planet[] planets = new planet[10];
 	Asteroids asteroid = new Asteroids("asteroid");
 	public static Platform platform;
+	public static Platform platform2;
+	public static Platform platform3;
 
 	Collision Shape;
 
@@ -38,11 +43,13 @@ public class Lander extends BasicGame {
 
 	static int VIEWPORT_SIZE_X = 1200;
 	static int VIEWPORT_SIZE_Y = 700;
-	
-	
+
 	float bgPosX = player.x - VIEWPORT_SIZE_X / 3;
 	float bgPosY = player.y - VIEWPORT_SIZE_Y / 3;
 	
+	
+
+	float parallaxConstant = 30;
 
 	public Lander(String title) {
 		super(title);
@@ -58,8 +65,8 @@ public class Lander extends BasicGame {
 		// TODO is called constantly. This is where all your graphics is done.
 
 		// translate functions below are used to create "parallax" effect.
-		arg1.translate(-player.x / 30, -player.y
-				/ 30);
+		arg1.translate(-player.x / parallaxConstant, -player.y
+				/ parallaxConstant);
 		arg1.drawImage(bg, bgPosX, bgPosY); // draws background somewhat
 											// centralized
 
@@ -72,11 +79,25 @@ public class Lander extends BasicGame {
 				+ stardust.getWidth());
 
 		arg1.translate(-player.x / 2, -player.y / 2);
+		
+		
+		
+		
+		
+		
+		
 		testplanet.render(arg0, arg1);
-		asteroid.render(arg0, arg1);
+		testplanet2.render(arg0, arg1);
+		testplanet3.render(arg0, arg1);
+		
 		platform.render(arg0, arg1);
+		platform2.render(arg0, arg1);
+		platform3.render(arg0, arg1);
 
-		arg1.translate(player.x / 30, player.y / 30);
+		asteroid.render(arg0, arg1);
+		
+		
+		arg1.translate(player.x / parallaxConstant, player.y / parallaxConstant);
 		player.render(arg0, arg1); // calls render method in Spaceship class
 		collision.render(arg0, arg1);
 		
@@ -92,7 +113,10 @@ public class Lander extends BasicGame {
 		gui.render(arg0, arg1); // calls render method in GUI
 		
 		
-
+		/*for (int i = 0; i <= 9; i++ ) {
+			planets[i].render(arg0, arg1);
+		}
+*/
 
 	}
 
@@ -103,12 +127,32 @@ public class Lander extends BasicGame {
 		// sounds.
 		bg = new Image("landerGame/resources/spaceBg3.jpg");
 		player.init(arg0); // calls init method in Spaceship
-		testplanet = new planet(1, -150, -100);
+		
+		//array of planets initialized, with scale and positions 
+		/*planets[0] = new planet(1, -100f, 200f);
+		planets[1] = new planet(1, -150f, 500f);
+		planets[2] = new planet(1, -150f, 1000f);
+		planets[3] = new planet(1, -150f, 1300f);
+		planets[4] = new planet(1, -150f, -100f);
+		planets[5] = new planet(1, -150f, -100f);
+		planets[6] = new planet(1, -150f, -100f);
+		planets[7] = new planet(1, -150f, -100f);
+		planets[8] = new planet(1, -150f, -100f);
+		planets[9] = new planet(1, -150f, -100f);*/
+		testplanet = new planet(1, -150, 900);
+		testplanet2 = new planet(1, 600, 400);
+		testplanet3 = new planet(1, -150, -450);
+		
+		platform = new Platform(1, 75, 870);
+		platform2 = new Platform(1, 800, 370);
+		platform3 = new Platform(1, 75, -480);
+		
 		asteroid.init(arg0);
 		gui.init(arg0);
 		stardust = new Image("landerGame/resources/stardust.png");
 		asteroidbelt = new Image("landerGame/resources/asteroidbelt1.png");
-		platform = new Platform(1, 75, -130);
+		
+		
 		
 		collision.init(arg0);
 		
@@ -123,11 +167,18 @@ public class Lander extends BasicGame {
 		bounds.update(arg0, delta);
 		collision.update(arg0, delta);
 		testplanet.update(arg0,delta);
+		testplanet2.update(arg0,delta);
+		testplanet3.update(arg0,delta);
 		platform.update(arg0, delta);
 
 		
 		gui.update(arg0, delta);
 		
+		//for every planet in the array there should be drawn a planet at these positions
+				
+		
+
+			
 		
 
 	}

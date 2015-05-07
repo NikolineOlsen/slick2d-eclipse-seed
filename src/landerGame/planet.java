@@ -26,7 +26,7 @@ public class planet {
 	
 	
 	
-	public planet(int size,int xlocation, int ylocation){
+	public planet(int size,float xlocation, float ylocation){
 		
 		position = new Vector2f(xlocation, ylocation);
 		
