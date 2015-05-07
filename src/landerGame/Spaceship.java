@@ -195,7 +195,14 @@ public class Spaceship extends BasicGame {
 
 		x += accelx + Lander.testplanet.gx;
 		y += accely + Lander.testplanet.gy;
-		}else{
+		}else if(CollisionDetection.GravitationalEffect2 == true){
+			x += accelx + Lander.testplanet2.gx;
+			y += accely + Lander.testplanet2.gy;
+		}else if(CollisionDetection.GravitationalEffect3 == true){
+			x += accelx + Lander.testplanet3.gx;
+			y += accely + Lander.testplanet3.gy;
+	
+		}else {	
 			x += accelx;
 			y += accely;
 		}

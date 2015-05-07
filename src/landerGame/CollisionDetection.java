@@ -30,8 +30,13 @@ public class CollisionDetection extends BasicGame {
 	public static boolean collidesWithPlatform2 = false;
 	public static boolean collidesWithPlatform3 = false;
 	public static boolean GravitationalEffect = false;
+	public static boolean GravitationalEffect2 = false;
+	public static boolean GravitationalEffect3 = false;
 	
 	public static Circle GPull;
+	public static Circle GPull2;
+	public static Circle GPull3;
+	
 	public CollisionDetection(String title) {
 		super(title);
 	}
@@ -55,6 +60,10 @@ public class CollisionDetection extends BasicGame {
 
 		g.setColor(new Color(255,0,255,0.2f));
 		g.fill(GPull);
+		g.setColor(new Color(255,0,255,0.2f));
+		g.fill(GPull2);
+		g.setColor(new Color(255,0,255,0.2f));
+		g.fill(GPull3);
 		
 		
 		
@@ -85,7 +94,8 @@ public class CollisionDetection extends BasicGame {
 		
 	
 		GPull = new Circle (Lander.testplanet.position.x +(planet.planetimage.getWidth()/2),Lander.testplanet.position.y +(planet.planetimage.getWidth()/2),planet.planetimage.getWidth());
-		
+		GPull2 = new Circle (Lander.testplanet2.position.x +(planet.planetimage.getWidth()/2),Lander.testplanet2.position.y +(planet.planetimage.getWidth()/2),planet.planetimage.getWidth());
+		GPull3 = new Circle (Lander.testplanet3.position.x +(planet.planetimage.getWidth()/2),Lander.testplanet3.position.y +(planet.planetimage.getWidth()/2),planet.planetimage.getWidth());
 	}	
 
 
@@ -110,6 +120,8 @@ public class CollisionDetection extends BasicGame {
 		collidesWithPlanet3 = shipCollider.intersects(planet3Collider);
 		
 		GravitationalEffect = shipCollider.intersects(GPull);
+		GravitationalEffect2 = shipCollider.intersects(GPull2);
+		GravitationalEffect3 = shipCollider.intersects(GPull3);
 		
 		//System.out.println(GravitationalEffect);
 		
