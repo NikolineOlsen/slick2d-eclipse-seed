@@ -182,7 +182,7 @@ public class Spaceship extends BasicGame {
 							// exit the thing. no more fuel...
 						}
 					}
-						
+						System.out.println ("something");
 
 
 		}
