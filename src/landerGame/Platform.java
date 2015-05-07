@@ -29,6 +29,7 @@ public class Platform {
 
 	public void render(GameContainer arg0, Graphics arg1) throws SlickException {
 		arg1.drawImage(platform, position.x, position.y);//draw platform on screen
+		
 	}
 	
 	

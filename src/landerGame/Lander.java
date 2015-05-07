@@ -72,7 +72,7 @@ public class Lander extends BasicGame {
 				+ stardust.getWidth());
 
 		arg1.translate(-player.x / 2, -player.y / 2);
-		
+
 		
 		testplanet.render(arg0, arg1);
 		testplanet2.render(arg0, arg1);
