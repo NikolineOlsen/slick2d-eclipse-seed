@@ -115,12 +115,21 @@ public class Spaceship extends BasicGame {
 
 		// fuel code for spaceship:
 		//if (fuelTank <= 0) { // if the fuel is equal or less than zero, the accelx and -y will be reduced by 1.05 for a smoother stop, when it's out of gas
+<<<<<<< HEAD
 
 			//accelx = accelx / 1.05;
 			//accely = accely / 1.05;
 			
 
 
+=======
+
+			//accelx = accelx / 1.05;
+			//accely = accely / 1.05;
+			
+
+
+>>>>>>> 0775ece9b09007a76bedc415060e9201d86c7e1d
 		//}
 
 		if (CollisionDetection.collidesWithPlanet == true) { // if ship collides with planet it stops
@@ -148,7 +157,10 @@ public class Spaceship extends BasicGame {
 			if (angle > -100 && angle < -70 && 0 < platformFuel) { // spaceship will keep tanking fuel until the platforms fuel is empty
 				platformFuel -= 50;
 				fuelTank +=50;
+<<<<<<< HEAD
 				score +=50;
+=======
+>>>>>>> 0775ece9b09007a76bedc415060e9201d86c7e1d
 				if (platformFuel == 0) {
 
 					// exit the thing. no more fuel...
@@ -156,6 +168,7 @@ public class Spaceship extends BasicGame {
 			}
 		}
 		if (CollisionDetection.collidesWithPlatform2 == true) {
+<<<<<<< HEAD
 
 			shipCollision();
 			// only gives as much fuel there is in the platform
@@ -184,6 +197,34 @@ public class Spaceship extends BasicGame {
 					}
 						
 
+=======
+
+			shipCollision();
+			// only gives as much fuel there is in the platform
+			if (angle > -100 && angle < -70 && 0 < platformFuel) { // spaceship will keep tanking fuel until the platforms fuel is empty
+				platformFuel -= 50;
+				fuelTank +=50;
+				if (platformFuel == 0) {
+
+					// exit the thing. no more fuel...
+				}
+			}
+		}
+				if (CollisionDetection.collidesWithPlatform3 == true) {
+
+					shipCollision();
+					// only gives as much fuel there is in the platform
+					if (angle > -100 && angle < -70 && 0 < platformFuel) { // spaceship will keep tanking fuel until the platforms fuel is empty
+						platformFuel -= 50;
+						fuelTank +=50;
+						if (platformFuel == 0) {
+
+							// exit the thing. no more fuel...
+						}
+					}
+						
+
+>>>>>>> 0775ece9b09007a76bedc415060e9201d86c7e1d
 
 		}
 				
@@ -192,7 +233,6 @@ public class Spaceship extends BasicGame {
 		//if ships angle is off it loses life, it the angle is right it gets fuel, when landing on platform
 		
 		/*if (CollisionDetection.collides == true){ // if ship collides with platform, it stops
-
 			//land ship
 			x += accelx - Lander.platform.gx;
 			y += accely - Lander.platform.gy;
@@ -235,7 +275,7 @@ public class Spaceship extends BasicGame {
 		x += accelx - Lander.testplanet.gx; // this stops the ship by canceling out the movement values with their negative values
 		y += accely - Lander.testplanet.gy;
 	
-		
+		stopShip();
 		
 		if ((accelx + accely) / 2 > -0.5) { // if ship collides and goes too
 											// fast, health is reduced
