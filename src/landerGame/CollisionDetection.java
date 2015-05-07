@@ -31,11 +31,12 @@ public class CollisionDetection extends BasicGame {
 	@Override
 	public void render(GameContainer container, Graphics g)	throws SlickException {
 
-		g.setColor(new Color(255,255,255,0.4f));
-		g.fill(planetCollider); // fills planetCollider with above defined white colour and transparency
 		
 		g.setColor(new Color(255,255,255,0.2f));
 		g.fill(shipCollider);
+		
+		g.setColor(new Color(255,255,255,0.4f));
+		g.fill(planetCollider); // fills planetCollider with above defined white colour and transparency
 		
 		g.setColor(new Color(255,255,255,0.2f));
 		g.fill(platformCollider);
@@ -56,9 +57,12 @@ public class CollisionDetection extends BasicGame {
 
 	@Override
 	public void init(GameContainer container) throws SlickException {
-		planetCollider = new Circle(0,0,planet.planetimage.getWidth()/2);
 		
 		shipCollider = new Circle(0,0,Lander.player.player.getWidth()/2,20); //needs to get values from player png size this way
+		
+		planetCollider = new Circle(0,0,planet.planetimage.getWidth()/2);
+		
+		
 		
 		platformCollider = new Rectangle(0,0, landerGame.Platform.platform.getWidth(), landerGame.Platform.platform.getHeight());
 	
@@ -77,7 +81,7 @@ public class CollisionDetection extends BasicGame {
 		
 		collidesWithPlatform = shipCollider.intersects(platformCollider); 	
 		collidesWithPlanet = shipCollider.intersects(planetCollider); //checks if ship collision box collides with planet collision box
-		
+	
 		GravitationalEffect = shipCollider.intersects(GPull);
 		
 		//System.out.println(GravitationalEffect);

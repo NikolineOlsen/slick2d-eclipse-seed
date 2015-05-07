@@ -25,7 +25,7 @@ public class Lander extends BasicGame {
 	
 							
 	MapBounds bounds = new MapBounds();
-	GUI gui = new GUI();
+	public static GUI gui = new GUI();
 	public static planet testplanet;
 	Asteroids asteroid = new Asteroids("asteroid");
 	public static Platform platform;
@@ -38,13 +38,11 @@ public class Lander extends BasicGame {
 
 	static int VIEWPORT_SIZE_X = 1200;
 	static int VIEWPORT_SIZE_Y = 700;
-
+	
+	
 	float bgPosX = player.x - VIEWPORT_SIZE_X / 3;
 	float bgPosY = player.y - VIEWPORT_SIZE_Y / 3;
 	
-	
-
-	float parallaxConstant = 30;
 
 	public Lander(String title) {
 		super(title);
@@ -60,8 +58,8 @@ public class Lander extends BasicGame {
 		// TODO is called constantly. This is where all your graphics is done.
 
 		// translate functions below are used to create "parallax" effect.
-		arg1.translate(-player.x / parallaxConstant, -player.y
-				/ parallaxConstant);
+		arg1.translate(-player.x / 30, -player.y
+				/ 30);
 		arg1.drawImage(bg, bgPosX, bgPosY); // draws background somewhat
 											// centralized
 
@@ -75,12 +73,10 @@ public class Lander extends BasicGame {
 
 		arg1.translate(-player.x / 2, -player.y / 2);
 		testplanet.render(arg0, arg1);
-		
 		asteroid.render(arg0, arg1);
-		
 		platform.render(arg0, arg1);
 
-		arg1.translate(player.x / parallaxConstant, player.y / parallaxConstant);
+		arg1.translate(player.x / 30, player.y / 30);
 		player.render(arg0, arg1); // calls render method in Spaceship class
 		collision.render(arg0, arg1);
 		

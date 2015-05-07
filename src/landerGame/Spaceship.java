@@ -116,6 +116,7 @@ public class Spaceship extends BasicGame {
 			accelx = accelx / 1.05;
 			accely = accely / 1.05;
 			stopShip();
+			Lander.gui.gameloss = true;
 
 
 		}
