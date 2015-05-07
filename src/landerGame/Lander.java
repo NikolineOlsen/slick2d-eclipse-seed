@@ -168,6 +168,8 @@ public class Lander extends BasicGame {
 		bounds.update(arg0, delta);
 		collision.update(arg0, delta);
 		testplanet.update(arg0,delta);
+		testplanet2.update(arg0,delta);
+		testplanet3.update(arg0,delta);
 		platform.update(arg0, delta);
 
 		
