@@ -15,6 +15,7 @@ public class GUI {
 	private boolean gameloss;
 	private int welcomeGUIAlpha = 200;
 	private int lossGUIAlpha = 200;
+	
 
 	public GUI() {
 		// TODO Auto-generated constructor stub
@@ -36,6 +37,7 @@ public class GUI {
 				Lander.VIEWPORT_SIZE_Y / 2+ 60);
 		arg1.drawRect(Lander.VIEWPORT_SIZE_X / 2 - 20, Lander.VIEWPORT_SIZE_Y / 2 - 20,
 				400, 120);
+		
 		if(Lander.player.ignition == true){
 			welcomeGUIAlpha --; // makes intro text fade out when throtthling
 		}
@@ -46,6 +48,8 @@ public class GUI {
 		arg1.setColor(new Color(255, 0, 0,200));
 		arg1.drawImage(heart, 120, 10); //draw heart for healthbar
 		arg1.drawString((int)Lander.player.health + "%", 170, 15); //drawing the estimated life that is left
+		arg1.setColor(new Color(255,255,255, 200));
+		arg1.drawString("Score " + Lander.player.score, 380, 15 );
 		
 		//if statements for fuel for spaceship:
 		if (Lander.player.fuelTank > 0){ //if the fuel tank is above zero it should display the values of fuel

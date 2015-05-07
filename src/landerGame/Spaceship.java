@@ -29,6 +29,7 @@ public class Spaceship extends BasicGame {
 	float width; // width of player
 	float height; // height of player'
 	public float health = 100; // health of player
+	int score = 0; //players score
 
 	AffineTransform transformer = new AffineTransform(); // initializing the AffineTransform method, that will help rotate the spaceship
 
@@ -147,6 +148,7 @@ public class Spaceship extends BasicGame {
 			if (angle > -100 && angle < -70 && 0 < platformFuel) { // spaceship will keep tanking fuel until the platforms fuel is empty
 				platformFuel -= 50;
 				fuelTank +=50;
+				score +=50;
 				if (platformFuel == 0) {
 
 					// exit the thing. no more fuel...
@@ -160,6 +162,7 @@ public class Spaceship extends BasicGame {
 			if (angle > -100 && angle < -70 && 0 < platformFuel) { // spaceship will keep tanking fuel until the platforms fuel is empty
 				platformFuel -= 50;
 				fuelTank +=50;
+				score +=50;
 				if (platformFuel == 0) {
 
 					// exit the thing. no more fuel...
@@ -173,6 +176,7 @@ public class Spaceship extends BasicGame {
 					if (angle > -100 && angle < -70 && 0 < platformFuel) { // spaceship will keep tanking fuel until the platforms fuel is empty
 						platformFuel -= 50;
 						fuelTank +=50;
+						score +=50;
 						if (platformFuel == 0) {
 
 							// exit the thing. no more fuel...
@@ -181,7 +185,8 @@ public class Spaceship extends BasicGame {
 						
 
 
-		} 
+		}
+				
 
 		//below is old fuel code
 		//if ships angle is off it loses life, it the angle is right it gets fuel, when landing on platform

@@ -50,6 +50,7 @@ public class Lander extends BasicGame {
 	
 
 	float parallaxConstant = 30;
+	
 
 	public Lander(String title) {
 		super(title);
