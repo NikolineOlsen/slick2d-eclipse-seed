@@ -46,6 +46,8 @@ public class Spaceship extends BasicGame {
 								// when fuelTank = 0
 	public int platformFuel = 1000;
 	public boolean shipTooFast = false;
+	
+	public planet closestPlanet = null;
 
 	public Spaceship(String title) { // remember to call this in Landers Main
 		super(title);
@@ -133,9 +135,8 @@ public class Spaceship extends BasicGame {
 			shipCollision();
 			 // only gives as much fuel there is in the platform
 				if (angle > -100 && angle < -70 && 0 < platformFuel) { // spaceship will keep tanking fuel until the platforms fuel is empty
-					platformFuel -= 10;
-					fuelTank +=10;
-
+					platformFuel -= 50;
+					fuelTank +=50;
 				if (platformFuel == 0) {
 
 					// exit the thing. no more fuel...
@@ -146,6 +147,7 @@ public class Spaceship extends BasicGame {
 
 		} 
 
+		//below is old fuel code
 		//if ships angle is off it loses life, it the angle is right it gets fuel, when landing on platform
 		
 		/*if (CollisionDetection.collides == true){ // if ship collides with platform, it stops
@@ -154,7 +156,7 @@ public class Spaceship extends BasicGame {
 			x += accelx - Lander.platform.gx;
 			y += accely - Lander.platform.gy;
 			
-		}*/
+		}
 		
 		if ( CollisionDetection.collidesWithPlatform == true && angle <= -120) {
 			
@@ -170,11 +172,8 @@ public class Spaceship extends BasicGame {
 			
 			fuelTank++;
 			
-			
-			
-
 		}
-
+*/
 		if (health <= 0) { // if health is below 0, player sprites are removed(made invisible)
 			player.setAlpha(0);
 			ignitionSprite.setAlpha(0);
@@ -192,8 +191,11 @@ public class Spaceship extends BasicGame {
 
 	private void shipCollision() {
 
-		x += accelx - Lander.testplanet.gx;
+		x += accelx - Lander.testplanet.gx; // this stops the ship by canceling out the movement values with their negative values
 		y += accely - Lander.testplanet.gy;
+	
+		
+		
 		if ((accelx + accely) / 2 > -0.5) { // if ship collides and goes too
 											// fast, health is reduced
 			shipTooFast = true;
@@ -213,9 +215,14 @@ public class Spaceship extends BasicGame {
 
 	public void movement() { // This function moves the ship in it's current
 								// direction
+		if (CollisionDetection.GravitationalEffect == true){
 
 		x += accelx + Lander.testplanet.gx;
 		y += accely + Lander.testplanet.gy;
+		}else{
+			x += accelx;
+			y += accely;
+		}
 
 		accelx = accelx / 1.001;
 		accely = accely / 1.001;
@@ -234,13 +241,17 @@ public class Spaceship extends BasicGame {
 		ignitionSprite.rotate(1);
 
 	}
-
+	
 	public void throttling() {
 		// here the throttle value (with it's embedded angular value) is added
 		// to the acceleration
+		if(accelx < 1){
 		accelx += throttlex;
+		}
+		
+		if(accely <1){
 		accely += throttley;
-
+		}
 	}
 
 	public void stopShip() { // method for stopping ship
