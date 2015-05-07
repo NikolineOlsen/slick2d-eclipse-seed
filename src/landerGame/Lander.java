@@ -82,7 +82,7 @@ public class Lander extends BasicGame {
 		platform2.render(arg0, arg1);
 		platform3.render(arg0, arg1);
 
-		asteroid.render(arg0, arg1);
+		
 		
 		
 		arg1.translate(player.x / 30, player.y / 30);
@@ -97,7 +97,7 @@ public class Lander extends BasicGame {
 		arg1.drawImage(asteroidbelt, bgPosX + asteroidbelt.getWidth(), bgPosY
 				+ asteroidbelt.getWidth());
 		
-		
+		asteroid.render(arg0, arg1);
 		gui.render(arg0, arg1); // calls render method in GUI
 	
 

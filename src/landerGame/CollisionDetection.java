@@ -47,7 +47,7 @@ public class CollisionDetection extends BasicGame {
 		g.setColor(new Color(255,255,255,0.2f));
 		g.fill(shipCollider);
 		
-		g.setColor(new Color(255,255,255,0.2f));
+		g.setColor(new Color(95,150,100,255));
 		g.fill(platformCollider);
 		g.fill(platform2Collider);
 		g.fill(platform3Collider);

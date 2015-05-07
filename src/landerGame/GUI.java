@@ -27,7 +27,7 @@ public class GUI {
 		//This first part is for the start menu intro text
 		arg1.resetTransform();
 		arg1.setColor(new Color(0, 255, 150,welcomeGUIAlpha));
-		arg1.drawString("Welcome to the game", Lander.VIEWPORT_SIZE_X / 2,
+		arg1.drawString("Welcome to the Lander game", Lander.VIEWPORT_SIZE_X / 2,
 				Lander.VIEWPORT_SIZE_Y / 2);
 		arg1.drawString("CONTROL spaceship with WASD or arrow keys", Lander.VIEWPORT_SIZE_X / 2,
 				Lander.VIEWPORT_SIZE_Y / 2+ 20);
@@ -35,6 +35,8 @@ public class GUI {
 				Lander.VIEWPORT_SIZE_Y / 2+ 40);
 		arg1.drawString("Restart game with R", Lander.VIEWPORT_SIZE_X / 2,
 				Lander.VIEWPORT_SIZE_Y / 2+ 60);
+		arg1.drawString("Collect fuel by landing on platforms", Lander.VIEWPORT_SIZE_X / 2,
+				Lander.VIEWPORT_SIZE_Y / 2+ 80);
 		arg1.drawRect(Lander.VIEWPORT_SIZE_X / 2 - 20, Lander.VIEWPORT_SIZE_Y / 2 - 20,
 				400, 120);
 		
