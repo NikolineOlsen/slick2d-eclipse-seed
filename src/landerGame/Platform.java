@@ -12,11 +12,11 @@ public class Platform {
 
 	static Image platform; 
 	
-	public float gx;
-	public float gy;
+	//public float gx;
+	//public float gy;
 	
 	Vector2f position; //using the vector position from the planet
-	public int platformFuel;
+	//public int platformFuel;
 
 	
 	
@@ -24,7 +24,7 @@ public class Platform {
 		
 		platform = new Image("platform.png"); //loading image for platform
 		position = new Vector2f(xlocation, ylocation); //setting the vector position equal to the coords from the constructor for the platform
-		platformFuel = 500;
+		//platformFuel = 500;
 	}
 
 	public void render(GameContainer arg0, Graphics arg1) throws SlickException {
