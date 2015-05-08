@@ -41,7 +41,7 @@ public class Platform {
 	} 	
 	
 	public void update(GameContainer arg0, int delta) {
-		gx = ((position.x-300) - Lander.player.x)/100;
-		gy = ((position.y-50) - Lander.player.y)/100;
+		//gx = ((position.x-300) - Lander.player.x)/100;
+		//gy = ((position.y-50) - Lander.player.y)/100;
 	}
 }
