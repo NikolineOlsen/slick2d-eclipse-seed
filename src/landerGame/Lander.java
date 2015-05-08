@@ -154,7 +154,7 @@ public class Lander extends BasicGame {
 
 
 	}
-	
+	//static void main
 	public static void main(String[] args) {
 		Lander game = new Lander("Lander Game");
 		try {
