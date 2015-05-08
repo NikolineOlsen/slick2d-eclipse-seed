@@ -141,6 +141,9 @@ public class Spaceship extends BasicGame {
 				fuelTank +=50;
 				score +=50;
 			}
+			if(input.isKeyDown(Input.KEY_UP)){
+				accely = accely-1;
+			}
 		}
 		if (CollisionDetection.collidesWithPlatform2 == true) {
 			shipCollision();
@@ -149,6 +152,9 @@ public class Spaceship extends BasicGame {
 				platformFuel2 -= 50;
 				fuelTank +=50;
 				score +=50;
+			}
+			if(input.isKeyDown(Input.KEY_UP)){
+				accely = accely-1;
 			}
 		}
 		if (CollisionDetection.collidesWithPlatform3 == true) {
@@ -159,7 +165,13 @@ public class Spaceship extends BasicGame {
 				fuelTank +=50;
 				score +=50;
 			}
+			if(input.isKeyDown(Input.KEY_UP)){
+				accely = accely-1;
+			}
 		}
+		//if (CollisionDetection.collidesWithPlatform3 == true && input.isKeyDown(Input.KEY_UP)) {
+		
+		//}
 
 		
 		if (health <= 0) { // if health is below 0, player sprites are removed(made invisible)
@@ -253,8 +265,8 @@ public class Spaceship extends BasicGame {
 	}
 
 	public void stopShip() { // method for stopping ship
-		accelx = accelx / 1.05;
-		accely = accely / 1.05;
+		accelx = 0;
+		accely = 0;
 
 	}
 
