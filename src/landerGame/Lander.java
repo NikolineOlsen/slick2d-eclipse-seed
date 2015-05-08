@@ -92,10 +92,10 @@ public class Lander extends BasicGame {
 		// multiple instances of asteroids are created to fill out the scene
 		arg1.translate(-player.x * 2, -player.y * 2);
 		arg1.drawImage(asteroidbelt, bgPosX, bgPosY);
-		arg1.drawImage(asteroidbelt, bgPosX + asteroidbelt.getWidth(), bgPosY);
-		arg1.drawImage(asteroidbelt, bgPosX, bgPosY + asteroidbelt.getWidth());
-		arg1.drawImage(asteroidbelt, bgPosX + asteroidbelt.getWidth(), bgPosY
-				+ asteroidbelt.getWidth());
+		arg1.drawImage(asteroidbelt, bgPosX + asteroidbelt.getWidth()-1000, bgPosY-1000);
+		arg1.drawImage(asteroidbelt, bgPosX-1000, bgPosY + asteroidbelt.getWidth()-1000);
+		arg1.drawImage(asteroidbelt, bgPosX + asteroidbelt.getWidth()-1000, bgPosY
+				+ asteroidbelt.getWidth()-1000);
 		
 		asteroid.render(arg0, arg1);
 		gui.render(arg0, arg1); // calls render method in GUI

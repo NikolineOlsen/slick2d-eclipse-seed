@@ -36,8 +36,8 @@ public class Asteroids extends BasicGame {
 
 	@Override
 	public void render(GameContainer arg0, Graphics g) throws SlickException { 
-		g.drawImage(asteroid, x + Lander.VIEWPORT_SIZE_X / 2, y
-				+ Lander.VIEWPORT_SIZE_Y / 2); 
+		g.drawImage(asteroid, x + Lander.VIEWPORT_SIZE_X / 2+1000, y
+				+200+ Lander.VIEWPORT_SIZE_Y / 2); 
 	}
 
 	@Override

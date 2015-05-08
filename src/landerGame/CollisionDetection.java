@@ -44,12 +44,12 @@ public class CollisionDetection extends BasicGame {
 	@Override
 	public void render(GameContainer container, Graphics g)	throws SlickException {
 
-		g.setColor(new Color(255,255,255,0.4f));
+		g.setColor(new Color(255,255,255,0f));
 		g.fill(planetCollider); // fills planetCollider with above defined white colour and transparency
 		g.fill(planet2Collider);
 		g.fill(planet3Collider);
 		
-		g.setColor(new Color(255,255,255,0.2f));
+		g.setColor(new Color(255,255,255,0f));
 		g.fill(shipCollider);
 		
 		g.setColor(new Color(95,150,100,255));
@@ -58,15 +58,15 @@ public class CollisionDetection extends BasicGame {
 		g.fill(platform3Collider);
 		
 
-		g.setColor(new Color(255,0,255,0.2f));
+		g.setColor(new Color(255,0,255,0f));
 		g.fill(GPull);
-		g.setColor(new Color(255,0,255,0.2f));
+		g.setColor(new Color(255,0,255,0f));
 		g.fill(GPull2);
-		g.setColor(new Color(255,0,255,0.2f));
+		g.setColor(new Color(255,0,255,0f));
 		g.fill(GPull3);
 		
 		
-		
+		/*
 
 		g.resetTransform();
 		g.setColor(Color.black);
@@ -77,7 +77,7 @@ public class CollisionDetection extends BasicGame {
 		g.drawString("Collides with platform2: "+collidesWithPlatform2, 10, 120);
 		g.drawString("Collides with platform3: "+collidesWithPlatform3, 10, 140);
 		
-		
+		*/
 	}
 
 	@Override
