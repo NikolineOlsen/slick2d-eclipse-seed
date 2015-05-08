@@ -69,12 +69,13 @@ public class CollisionDetection extends BasicGame {
 		
 
 		g.resetTransform();
+		g.setColor(Color.black);
 		g.drawString("Collides with planet: "+collidesWithPlanet, 10, 40); //for debugging collision
-		g.drawString("Collides with planet: "+collidesWithPlanet2, 10, 40);
-		g.drawString("Collides with planet: "+collidesWithPlanet3, 10, 40);
-		g.drawString("Collides with platform: "+collidesWithPlatform, 10, 60);
-		g.drawString("Collides with platform: "+collidesWithPlatform2, 10, 60);
-		g.drawString("Collides with platform: "+collidesWithPlatform3, 10, 60);
+		g.drawString("Collides with planet2: "+collidesWithPlanet2, 10, 60);
+		g.drawString("Collides with planet3: "+collidesWithPlanet3, 10, 80);
+		g.drawString("Collides with platform: "+collidesWithPlatform, 10, 100);
+		g.drawString("Collides with platform2: "+collidesWithPlatform2, 10, 120);
+		g.drawString("Collides with platform3: "+collidesWithPlatform3, 10, 140);
 		
 		
 	}
