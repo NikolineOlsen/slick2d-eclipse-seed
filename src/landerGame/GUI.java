@@ -108,7 +108,7 @@ public class GUI {
 		// things up for your game, such as loading resources like images and
 		// sounds.
 			
-		heart = new Image("landerGame/Resources/HeartFull.png"); //healthbar for player
+		heart = new Image("HeartFull.png"); //healthbar for player
 
 	} 	
 }

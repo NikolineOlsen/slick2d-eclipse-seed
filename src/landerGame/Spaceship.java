@@ -76,11 +76,11 @@ public class Spaceship extends BasicGame {
 
 	public void init(GameContainer arg0) throws SlickException { // init is called when the game starts. This is where we set things up for the game, like load resources like images and sound.
 		// loading the spaceship image:
-		player = new Image("landerGame/Resources/minispace.png");
+		player = new Image("minispace.png");
 
 		player.setCenterOfRotation((player.getWidth() / 2),
 				(player.getHeight() / 3) - 10); // sets point of rotation on player, is a bit offset because the image is heigher than the spaceship sprite
-		ignitionSprite = new Image("landerGame/Resources/ignition.png");// loading ignition sprite
+		ignitionSprite = new Image("ignition.png");// loading ignition sprite
 
 	}
 
@@ -141,6 +141,9 @@ public class Spaceship extends BasicGame {
 				fuelTank +=50;
 				score +=50;
 			}
+			if(input.isKeyDown(Input.KEY_UP)){
+				accely = accely-1;
+			}
 		}
 		if (CollisionDetection.collidesWithPlatform2 == true) {
 			shipCollision();
@@ -149,6 +152,9 @@ public class Spaceship extends BasicGame {
 				platformFuel2 -= 50;
 				fuelTank +=50;
 				score +=50;
+			}
+			if(input.isKeyDown(Input.KEY_UP)){
+				accely = accely-1;
 			}
 		}
 		if (CollisionDetection.collidesWithPlatform3 == true) {
@@ -159,7 +165,13 @@ public class Spaceship extends BasicGame {
 				fuelTank +=50;
 				score +=50;
 			}
+			if(input.isKeyDown(Input.KEY_UP)){
+				accely = accely-1;
+			}
 		}
+		//if (CollisionDetection.collidesWithPlatform3 == true && input.isKeyDown(Input.KEY_UP)) {
+		
+		//}
 
 		
 		if (health <= 0) { // if health is below 0, player sprites are removed(made invisible)
@@ -253,8 +265,8 @@ public class Spaceship extends BasicGame {
 	}
 
 	public void stopShip() { // method for stopping ship
-		accelx = accelx / 1.05;
-		accely = accely / 1.05;
+		accelx = 0;
+		accely = 0;
 
 	}
 

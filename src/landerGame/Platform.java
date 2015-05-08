@@ -22,7 +22,7 @@ public class Platform {
 	
 	public Platform(int size,int xlocation, int ylocation) throws SlickException{ //constructor for the platform to be called in the init section in Lander
 		
-		platform = new Image("landerGame/Resources/platform.png"); //loading image for platform
+		platform = new Image("platform.png"); //loading image for platform
 		position = new Vector2f(xlocation, ylocation); //setting the vector position equal to the coords from the constructor for the platform
 		platformFuel = 500;
 	}
