@@ -49,6 +49,7 @@ public class Spaceship extends BasicGame {
 	public int platformFuel2 = 1000;
 	public int platformFuel3 = 1000;
 	public boolean shipTooFast = false;
+
 	
 	public planet closestPlanet = null;
 
@@ -118,19 +119,15 @@ public class Spaceship extends BasicGame {
 		// fuel code for spaceship:
 		if (fuelTank <= 0) { // if the fuel is equal or less than zero, the accelx and -y will be reduced by 1.05 for a smoother stop, when it's out of gas
 
-
 			stopShip();
 			GUI.gameloss = true;
 		}
 
 
-
 		if (CollisionDetection.collidesWithPlanet == true || CollisionDetection.collidesWithPlanet2 == true || CollisionDetection.collidesWithPlanet3 == true) { // if ship collides with planet it stops
 
-			// land ship
+			// ship collides with planet
 			shipCollision(); // also checks if accel is too high and reduces health if it is. also checks angle
-
-		
 		
 		}
 
@@ -176,15 +173,18 @@ public class Spaceship extends BasicGame {
 											// fast, health is reduced
 			shipTooFast = true;
 			health -= 0.2f;
+			
 		} else if ((accelx + accely) / 2 < -0.5) {
-			shipTooFast = false; // doesnt work atm for some reason, should not display damage when not going too fast
+			shipTooFast = false; 
+			
 		}
 		
 		if (angle < -100 || angle > -70) { // if angle is too wrong, ship takes more damage
-												
+									
 			health -= 0.5f;
 			System.out.println("Angle is wrong");
 		} else {
+			
 			System.out.println("Angle is right");
 		}
 	}

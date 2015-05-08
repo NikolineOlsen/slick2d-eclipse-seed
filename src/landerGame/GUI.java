@@ -60,11 +60,8 @@ public class GUI {
 		else if (Lander.player.fuelTank <= 0) { //if the fuel level is below zero it should switch to another fuel variable set to zero.
 		arg1.drawString("Fuel " + Lander.player.fuelTankLow, 250, 15);
 		}
-		//if statements for damage, destruction and reset:
-		if(CollisionDetection.collidesWithPlanet == true && Lander.player.shipTooFast == true || CollisionDetection.collidesWithPlatform == true){
-			arg1.setColor(Color.red);
-			arg1.drawString("Your spaceship is taking damage", 50, 50);
-		}
+		//if statements for destruction and reset:
+		
 		if(Lander.player.health <=0){
 			 gameloss = true;
 		}
@@ -96,6 +93,9 @@ public class GUI {
 			Lander.player.player.setAlpha(255);
 			Lander.player.ignitionSprite.setAlpha(255);
 			Lander.player.score = 0;
+			Lander.player.platformFuel = 1000;
+			Lander.player.platformFuel2 = 1000;
+			Lander.player.platformFuel3 = 1000;
 			welcomeGUIAlpha = 200;
 			lossGUIAlpha  = 0;
 			gameloss = false;
