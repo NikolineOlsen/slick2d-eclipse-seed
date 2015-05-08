@@ -21,18 +21,18 @@ public class planet {
 	static Image planetimage;
 	
 	
-	
+	//This is the position of the planets that they will be spawned at
 	Vector2f position;
 	
 	
-	
+	//this is the planet class being created. The planet class contains some amount of gravity , that attracts the player to the planet
 	public planet(int size,float xlocation, float ylocation){
 		
 		position = new Vector2f(xlocation, ylocation);
 		
 		if(size == 1){
-			gravity = 100;        //<--- numbers for gravity and fuel are temporary. they will likely be changed once we implement fuel and gravity
-			fuelamount = 100;
+			gravity = 100;        
+			
 			try {
 				planetimage = new Image("tempsmallplanet.png");
 			} catch (SlickException e) {
@@ -43,14 +43,15 @@ public class planet {
 		}
 		if(size == 2){
 			gravity = 200;
-			fuelamount = 300;
+			
 		}
 		if(size == 3){
 			gravity = 200;
-			fuelamount = 300;
+			
 			
 		}
 	}
+	//here the image for the planet will be drawn on the screen in the said position
 		public void render(GameContainer arg0, Graphics arg1) throws SlickException {
 
 			
@@ -61,14 +62,16 @@ public class planet {
 			
 			
 	}
-		public int width() {
+		
+		/*public int width() {
 			// TODO Auto-generated method stub
 			return 0;
 		}
 		public int height() {
 			// TODO Auto-generated method stub
 			return 0;
-		}
+		}*/
+		//the force that attracts the player towards it
 		public void update(GameContainer arg0, int delta) {
 			gx = ((position.x-300) - Lander.player.x)/400;
 			gy = ((position.y-50) - Lander.player.y)/400;

@@ -14,46 +14,47 @@ import org.newdawn.slick.SlickException;
 
 public class Lander extends BasicGame {
 
-
+//declaring the background and foreground images for the game
 	Image bg;
 	Image stardust;
 	Image asteroidbelt;
 	
 	
-	
+	//creating a new instance of the player in the main lander game
 	public static Spaceship player = new Spaceship("Player"); // creates new spaceship object.
 	
 							
-	MapBounds bounds = new MapBounds();
-	public static GUI gui = new GUI();
-	public static planet testplanet;
+	MapBounds bounds = new MapBounds(); //declaration of the boundaries of the map
+	public static GUI gui = new GUI(); //declaration of the GUI class
+	public static planet testplanet; //declaration of all of the 3 planets
 	public static planet testplanet2;
 	public static planet testplanet3;
-	Asteroids asteroid = new Asteroids("asteroid");
-	public static Platform platform;
+	Asteroids asteroid = new Asteroids("asteroid"); //declaration of the asteroid image in the foreground
+	public static Platform platform; //declaration of all of the 3 platforms
 	public static Platform platform2;
 	public static Platform platform3;
 
-	Collision Shape;
+	Collision Shape; //declaration of the collision class
 
-	public static CollisionDetection collision = new CollisionDetection("CollisionDetector");
+	public static CollisionDetection collision = new CollisionDetection("CollisionDetector"); //creating a new instance of the collision detection
 
 
-
-	static int VIEWPORT_SIZE_X = 1200;
+	//setting the size of the game
+	static int VIEWPORT_SIZE_X = 1200; 
 	static int VIEWPORT_SIZE_Y = 700;
 
+	//setting the players start position
 	float bgPosX = player.x - VIEWPORT_SIZE_X / 3;
 	float bgPosY = player.y - VIEWPORT_SIZE_Y / 3;
 	
 
-
+	//creating a class of the main game where all of the other classes will be tied together with this one
 	public Lander(String title) {
 		super(title);
 		// constructor
 	}
 
-	
+	//this is where all of the images from the other classes; platform, planet and collision detection, player is drawn
 	@Override
 	public void render(GameContainer arg0, Graphics arg1) throws SlickException {
 		// TODO is called constantly. This is where all your graphics is done.
@@ -103,7 +104,7 @@ public class Lander extends BasicGame {
 
 
 	}
-
+	//initializing all of the 3 planets, platforms, player and collision
 	@Override
 	public void init(GameContainer arg0) throws SlickException {
 		// TODO is called when the game starts. You can put code here to set
@@ -131,7 +132,7 @@ public class Lander extends BasicGame {
 	
 	} 	
 
-
+	//refering to all of the classes' update
 	@Override
 	public void update(GameContainer arg0, int delta) throws SlickException {
 		player.update(arg0, delta); // calls Spaceship class update method,
@@ -153,7 +154,7 @@ public class Lander extends BasicGame {
 
 
 	}
-
+	
 	public static void main(String[] args) {
 		Lander game = new Lander("Lander Game");
 		try {

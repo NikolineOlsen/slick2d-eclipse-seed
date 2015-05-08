@@ -11,9 +11,9 @@ import org.newdawn.slick.state.GameState;
 
 public class GUI {
 	
-	Image heart;
-	public static boolean gameloss;
-	private int welcomeGUIAlpha = 200;
+	Image heart; 
+	public static boolean gameloss; 
+	private int welcomeGUIAlpha = 200; 
 	private int lossGUIAlpha = 200;
 	
 

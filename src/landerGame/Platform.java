@@ -19,7 +19,7 @@ public class Platform {
 	//public int platformFuel;
 
 	
-	
+	//creating the platform class, that contains the loading of the platform image and the location 
 	public Platform(int size,int xlocation, int ylocation) throws SlickException{ //constructor for the platform to be called in the init section in Lander
 		
 		platform = new Image("platform.png"); //loading image for platform

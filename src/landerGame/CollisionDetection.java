@@ -15,29 +15,29 @@ import org.newdawn.slick.geom.Transform;
 
 public class CollisionDetection extends BasicGame {
 
-	public static Shape shipCollider = null;
-	private static Circle planetCollider = null;
-	private static Circle planet2Collider = null;
+	public static Shape shipCollider = null; //declaring and initializing a collision detection around the spaceship
+	private static Circle planetCollider = null; //declaring and initializing a collision detection around all of the 3 planets.
+	private static Circle planet2Collider = null; 
 	private static Circle planet3Collider = null;
-	private static Rectangle platformCollider = null;
+	private static Rectangle platformCollider = null; //declaring and initializing a collision detection around all of the 3 platforms
 	private static Rectangle platform2Collider = null;
 	private static Rectangle platform3Collider = null;
 	
-	public static boolean collidesWithPlanet = false;
+	public static boolean collidesWithPlanet = false; //creating booleans to check if a collision is happening between all of the 3 planets and other collisions
 	public static boolean collidesWithPlanet2 = false;
 	public static boolean collidesWithPlanet3 = false;
-	public static boolean collidesWithPlatform = false;
+	public static boolean collidesWithPlatform = false; //creating booleans to check if a collision is happening between all of the 3 platforms and other collisions
 	public static boolean collidesWithPlatform2 = false;
 	public static boolean collidesWithPlatform3 = false;
-	public static boolean GravitationalEffect = false;
+	public static boolean GravitationalEffect = false; //creating booleans to check if a gravity is happening 
 	public static boolean GravitationalEffect2 = false;
 	public static boolean GravitationalEffect3 = false;
 	
-	public static Circle GPull;
+	public static Circle GPull; //creating the circle of gravity around all of the 3 planets
 	public static Circle GPull2;
 	public static Circle GPull3;
 	
-	public CollisionDetection(String title) {
+	public CollisionDetection(String title) { //creating the class CollisionDetection
 		super(title);
 	}
 
@@ -45,21 +45,21 @@ public class CollisionDetection extends BasicGame {
 	public void render(GameContainer container, Graphics g)	throws SlickException {
 
 		g.setColor(new Color(255,255,255,0f));
-		g.fill(planetCollider); // fills planetCollider with above defined white colour and transparency
+		g.fill(planetCollider); // fills planetCollider with above defined white colour and transparency for all of the 3 collision on the planets
 		g.fill(planet2Collider);
 		g.fill(planet3Collider);
 		
 		g.setColor(new Color(255,255,255,0f));
-		g.fill(shipCollider);
+		g.fill(shipCollider); //colors the ship collision (it will be completely transparent)
 		
 		g.setColor(new Color(95,150,100,255));
-		g.fill(platformCollider);
+		g.fill(platformCollider); //colors the platform collisions (will also be completely transparent)
 		g.fill(platform2Collider);
 		g.fill(platform3Collider);
 		
 
 		g.setColor(new Color(255,0,255,0f));
-		g.fill(GPull);
+		g.fill(GPull); //coloring the gravity circles around the 3 planets (will also be completely transparent)
 		g.setColor(new Color(255,0,255,0f));
 		g.fill(GPull2);
 		g.setColor(new Color(255,0,255,0f));
@@ -80,9 +80,10 @@ public class CollisionDetection extends BasicGame {
 		*/
 	}
 
+	//initializing all of the collision detection circles around the 3 planets, platforms and ship, and the gravity circle is drawn as well
 	@Override
 	public void init(GameContainer container) throws SlickException {
-		planetCollider = new Circle(0,0,planet.planetimage.getWidth()/2);
+		planetCollider = new Circle(0,0,planet.planetimage.getWidth()/2); 
 		planet2Collider = new Circle(0,0,planet.planetimage.getWidth()/2);
 		planet3Collider = new Circle(0,0,planet.planetimage.getWidth()/2);
 		
@@ -99,7 +100,7 @@ public class CollisionDetection extends BasicGame {
 		GPull3 = new Circle (Lander.testplanet3.position.x +(planet.planetimage.getWidth()/2),Lander.testplanet3.position.y +(planet.planetimage.getWidth()/2),planet.planetimage.getWidth());
 	}	
 
-
+	//using the pre-made booleans to check for collision between spaceship and platform, and spaceship and planets.
 	@Override
 	public void update(GameContainer container, int delta) throws SlickException {
 		
