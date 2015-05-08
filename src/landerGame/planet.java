@@ -34,7 +34,7 @@ public class planet {
 			gravity = 100;        //<--- numbers for gravity and fuel are temporary. they will likely be changed once we implement fuel and gravity
 			fuelamount = 100;
 			try {
-				planetimage = new Image("landerGame/resources/tempsmallplanet.png");
+				planetimage = new Image("tempsmallplanet.png");
 			} catch (SlickException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();

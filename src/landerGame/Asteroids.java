@@ -43,7 +43,7 @@ public class Asteroids extends BasicGame {
 	@Override
 	public void init(GameContainer arg0) throws SlickException { 
 		// loading the spaceasteroid image:
-		asteroid = new Image("landerGame/Resources/asteroid1.png");
+		asteroid = new Image("asteroid1.png");
 		asteroid.setCenterOfRotation((asteroid.getWidth() / 2),
 				(asteroid.getHeight() / 2));
 

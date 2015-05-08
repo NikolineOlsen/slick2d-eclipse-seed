@@ -76,11 +76,11 @@ public class Spaceship extends BasicGame {
 
 	public void init(GameContainer arg0) throws SlickException { // init is called when the game starts. This is where we set things up for the game, like load resources like images and sound.
 		// loading the spaceship image:
-		player = new Image("landerGame/Resources/minispace.png");
+		player = new Image("minispace.png");
 
 		player.setCenterOfRotation((player.getWidth() / 2),
 				(player.getHeight() / 3) - 10); // sets point of rotation on player, is a bit offset because the image is heigher than the spaceship sprite
-		ignitionSprite = new Image("landerGame/Resources/ignition.png");// loading ignition sprite
+		ignitionSprite = new Image("ignition.png");// loading ignition sprite
 
 	}
 

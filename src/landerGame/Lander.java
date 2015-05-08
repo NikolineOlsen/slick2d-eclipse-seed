@@ -109,7 +109,7 @@ public class Lander extends BasicGame {
 		// TODO is called when the game starts. You can put code here to set
 		// things up for your game, such as loading resources like images and
 		// sounds.
-		bg = new Image("landerGame/resources/spaceBg3.jpg");
+		bg = new Image("spaceBg3.jpg");
 		player.init(arg0); // calls init method in Spaceship
 		
 		
@@ -123,8 +123,8 @@ public class Lander extends BasicGame {
 		
 		asteroid.init(arg0);
 		gui.init(arg0);
-		stardust = new Image("landerGame/resources/stardust.png");
-		asteroidbelt = new Image("landerGame/resources/asteroidbelt1.png");
+		stardust = new Image("stardust.png");
+		asteroidbelt = new Image("asteroidbelt1.png");
 
 		collision.init(arg0);
 		
