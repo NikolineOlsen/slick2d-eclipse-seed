@@ -142,7 +142,7 @@ public class Spaceship extends BasicGame {
 				fuelTank +=50;
 				score +=50;
 			}
-			if(input.isKeyDown(Input.KEY_UP)){
+			if(input.isKeyDown(Input.KEY_UP)|| input.isKeyDown(Input.KEY_W)){
 				accely = accely-1;
 			}
 		}
@@ -154,7 +154,7 @@ public class Spaceship extends BasicGame {
 				fuelTank +=50;
 				score +=50;
 			}
-			if(input.isKeyDown(Input.KEY_UP)){
+			if(input.isKeyDown(Input.KEY_UP)|| input.isKeyDown(Input.KEY_W)){
 				accely = accely-1;
 			}
 		}
@@ -166,7 +166,7 @@ public class Spaceship extends BasicGame {
 				fuelTank +=50;
 				score +=50;
 			}
-			if(input.isKeyDown(Input.KEY_UP)){
+			if(input.isKeyDown(Input.KEY_UP)|| input.isKeyDown(Input.KEY_W)){
 				accely = accely-1;
 			}
 		}
