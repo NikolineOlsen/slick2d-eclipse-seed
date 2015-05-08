@@ -13,7 +13,7 @@ public class MapBounds {
 		//4 is statements for each of the 4 sides of the map
 				System.out.println("Player x pos: " + Lander.player.x );
 				System.out.println("Player y pos: "+ Lander.player.y);
-				if (Lander.player.y < -1000) {
+				if (Lander.player.y < -1400) {
 					Lander.player.y += 200;
 					Lander.player.accely = 0;
 					System.out.println("player out of bounds");
