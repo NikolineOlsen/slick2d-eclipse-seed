@@ -30,8 +30,13 @@ public class CollisionDetection extends BasicGame {
 	public static boolean collidesWithPlatform2 = false;
 	public static boolean collidesWithPlatform3 = false;
 	public static boolean GravitationalEffect = false;
+	public static boolean GravitationalEffect2 = false;
+	public static boolean GravitationalEffect3 = false;
 	
 	public static Circle GPull;
+	public static Circle GPull2;
+	public static Circle GPull3;
+	
 	public CollisionDetection(String title) {
 		super(title);
 	}
@@ -39,12 +44,12 @@ public class CollisionDetection extends BasicGame {
 	@Override
 	public void render(GameContainer container, Graphics g)	throws SlickException {
 
-		g.setColor(new Color(255,255,255,0.4f));
+		g.setColor(new Color(255,255,255,0f));
 		g.fill(planetCollider); // fills planetCollider with above defined white colour and transparency
 		g.fill(planet2Collider);
 		g.fill(planet3Collider);
 		
-		g.setColor(new Color(255,255,255,0.2f));
+		g.setColor(new Color(255,255,255,0f));
 		g.fill(shipCollider);
 		
 		g.setColor(new Color(95,150,100,255));
@@ -53,21 +58,26 @@ public class CollisionDetection extends BasicGame {
 		g.fill(platform3Collider);
 		
 
-		g.setColor(new Color(255,0,255,0.2f));
+		g.setColor(new Color(255,0,255,0f));
 		g.fill(GPull);
+		g.setColor(new Color(255,0,255,0f));
+		g.fill(GPull2);
+		g.setColor(new Color(255,0,255,0f));
+		g.fill(GPull3);
 		
 		
-		
+		/*
 
 		g.resetTransform();
+		g.setColor(Color.black);
 		g.drawString("Collides with planet: "+collidesWithPlanet, 10, 40); //for debugging collision
-		g.drawString("Collides with planet: "+collidesWithPlanet2, 10, 40);
-		g.drawString("Collides with planet: "+collidesWithPlanet3, 10, 40);
-		g.drawString("Collides with platform: "+collidesWithPlatform, 10, 60);
-		g.drawString("Collides with platform: "+collidesWithPlatform2, 10, 60);
-		g.drawString("Collides with platform: "+collidesWithPlatform3, 10, 60);
+		g.drawString("Collides with planet2: "+collidesWithPlanet2, 10, 60);
+		g.drawString("Collides with planet3: "+collidesWithPlanet3, 10, 80);
+		g.drawString("Collides with platform: "+collidesWithPlatform, 10, 100);
+		g.drawString("Collides with platform2: "+collidesWithPlatform2, 10, 120);
+		g.drawString("Collides with platform3: "+collidesWithPlatform3, 10, 140);
 		
-		
+		*/
 	}
 
 	@Override
@@ -85,7 +95,8 @@ public class CollisionDetection extends BasicGame {
 		
 	
 		GPull = new Circle (Lander.testplanet.position.x +(planet.planetimage.getWidth()/2),Lander.testplanet.position.y +(planet.planetimage.getWidth()/2),planet.planetimage.getWidth());
-		
+		GPull2 = new Circle (Lander.testplanet2.position.x +(planet.planetimage.getWidth()/2),Lander.testplanet2.position.y +(planet.planetimage.getWidth()/2),planet.planetimage.getWidth());
+		GPull3 = new Circle (Lander.testplanet3.position.x +(planet.planetimage.getWidth()/2),Lander.testplanet3.position.y +(planet.planetimage.getWidth()/2),planet.planetimage.getWidth());
 	}	
 
 
@@ -110,6 +121,8 @@ public class CollisionDetection extends BasicGame {
 		collidesWithPlanet3 = shipCollider.intersects(planet3Collider);
 		
 		GravitationalEffect = shipCollider.intersects(GPull);
+		GravitationalEffect2 = shipCollider.intersects(GPull2);
+		GravitationalEffect3 = shipCollider.intersects(GPull3);
 		
 		//System.out.println(GravitationalEffect);
 		

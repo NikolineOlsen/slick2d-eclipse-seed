@@ -49,6 +49,7 @@ public class Spaceship extends BasicGame {
 	public int platformFuel2 = 1000;
 	public int platformFuel3 = 1000;
 	public boolean shipTooFast = false;
+
 	
 	public planet closestPlanet = null;
 
@@ -118,34 +119,45 @@ public class Spaceship extends BasicGame {
 		// fuel code for spaceship:
 		if (fuelTank <= 0) { // if the fuel is equal or less than zero, the accelx and -y will be reduced by 1.05 for a smoother stop, when it's out of gas
 
-
 			stopShip();
 			GUI.gameloss = true;
 		}
 
 
-
 		if (CollisionDetection.collidesWithPlanet == true || CollisionDetection.collidesWithPlanet2 == true || CollisionDetection.collidesWithPlanet3 == true) { // if ship collides with planet it stops
 
-			// land ship
+			// ship collides with planet
 			shipCollision(); // also checks if accel is too high and reduces health if it is. also checks angle
-
-		
 		
 		}
 
 		// if ships angle is off it loses life, it the angle is right it gets
 		// fuel, when landing on platform
-		if (CollisionDetection.collidesWithPlatform == true ||CollisionDetection.collidesWithPlatform2 == true || CollisionDetection.collidesWithPlatform3 == true) {
-
+		if (CollisionDetection.collidesWithPlatform == true) {
 			shipCollision();
 			// only gives as much fuel there is in the platform
 			if (angle > -100 && angle < -70 && 0 < platformFuel) { // spaceship will keep tanking fuel until the platforms fuel is empty
 				platformFuel -= 50;
 				fuelTank +=50;
-
 				score +=50;
-
+			}
+		}
+		if (CollisionDetection.collidesWithPlatform2 == true) {
+			shipCollision();
+			// only gives as much fuel there is in the platform
+			if (angle > -100 && angle < -70 && 0 < platformFuel2) { // spaceship will keep tanking fuel until the platforms fuel is empty
+				platformFuel2 -= 50;
+				fuelTank +=50;
+				score +=50;
+			}
+		}
+		if (CollisionDetection.collidesWithPlatform3 == true) {
+			shipCollision();
+			// only gives as much fuel there is in the platform
+			if (angle > -100 && angle < -70 && 0 < platformFuel3) { // spaceship will keep tanking fuel until the platforms fuel is empty
+				platformFuel3 -= 50;
+				fuelTank +=50;
+				score +=50;
 			}
 		}
 
@@ -175,16 +187,19 @@ public class Spaceship extends BasicGame {
 		if ((accelx + accely) / 2 > -0.5) { // if ship collides and goes too
 											// fast, health is reduced
 			shipTooFast = true;
-			health -= 0.2f;
+			//health -= 0.2f;
+			
 		} else if ((accelx + accely) / 2 < -0.5) {
-			shipTooFast = false; // doesnt work atm for some reason, should not display damage when not going too fast
+			shipTooFast = false; 
+			
 		}
 		
 		if (angle < -100 || angle > -70) { // if angle is too wrong, ship takes more damage
-												
+									
 			health -= 0.5f;
 			System.out.println("Angle is wrong");
 		} else {
+			
 			System.out.println("Angle is right");
 		}
 	}
@@ -195,7 +210,14 @@ public class Spaceship extends BasicGame {
 
 		x += accelx + Lander.testplanet.gx;
 		y += accely + Lander.testplanet.gy;
-		}else{
+		}else if(CollisionDetection.GravitationalEffect2 == true){
+			x += accelx + Lander.testplanet2.gx;
+			y += accely + Lander.testplanet2.gy;
+		}else if(CollisionDetection.GravitationalEffect3 == true){
+			x += accelx + Lander.testplanet3.gx;
+			y += accely + Lander.testplanet3.gy;
+	
+		}else {	
 			x += accelx;
 			y += accely;
 		}
